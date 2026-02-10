@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiberTide Studio | 科技驱动内容增长</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <title>LiberTide Studio | 内容驱动·增长合伙人</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f8f7f4;
@@ -17,48 +17,52 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', 'Noto Sans SC', sans-serif; line-height: 1.6; }
 
-        /* 导航栏适配 200px Logo */
-        nav { max-width: var(--container-max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 40px 20px; }
-        .logo img { height: 200px; width: auto; max-width: 90vw; display: block; }
+        /* 导航栏：Logo 调至 60px */
+        nav { max-width: var(--container-max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 25px 20px; }
+        .logo img { height: 60px; width: auto; display: block; }
 
         /* Hero 区域 */
-        .hero { max-width: var(--container-max); margin: 0 auto; padding: 60px 20px 100px; text-align: left; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 3.8rem); line-height: 1.1; margin-bottom: 25px; font-weight: 800; }
-        .hero p { font-size: 1.25rem; max-width: 750px; opacity: 0.8; }
+        .hero { max-width: var(--container-max); margin: 0 auto; padding: 80px 20px; text-align: left; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 25px; font-weight: 800; }
+        .hero p { font-size: 1.15rem; max-width: 750px; opacity: 0.8; margin-bottom: 30px; }
 
-        /* --- 核心能力矩阵 (新加入) --- */
-        .section-title { text-align: center; margin-bottom: 60px; font-size: 2rem; font-weight: 700; }
-        .capability-section { padding: 100px 20px; background: #f1f0ec; }
-        .capability-container { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .cap-card { background: transparent; border-left: 1px solid rgba(91, 79, 71, 0.2); padding: 20px 30px; }
-        .cap-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--accent); }
-        .cap-card p { font-size: 0.95rem; opacity: 0.8; }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 1.8rem; font-weight: 700; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; width: 40px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        /* --- 两个核心配套 --- */
-        .pricing-section { background-color: var(--white); padding: 100px 20px; }
-        .pricing-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
-        .card { background: var(--bg-color); padding: 60px 45px; border-radius: 2px; border: 1px solid rgba(91, 79, 71, 0.1); position: relative; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
-        .card.featured { border: 2px solid var(--accent); }
-        .tag { position: absolute; top: -15px; left: 20px; background: var(--accent); color: white; padding: 5px 15px; font-size: 0.8rem; font-weight: 700; }
-        
-        .price { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin: 25px 0; }
-        .price span { font-size: 1.1rem; opacity: 0.5; }
+        /* 单独增值服务板块 */
+        .addon-services { padding: 80px 20px; background: #f1f0ec; }
+        .capability-container { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .cap-card { background: var(--white); padding: 40px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .cap-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--text-main); font-weight: 700; }
+        .cap-card p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 20px; }
+        .service-tag { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
 
-        ul { list-style: none; margin-bottom: 40px; }
-        li { margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 1rem; }
-        li::before { content: "→"; color: var(--accent); margin-right: 12px; font-weight: bold; }
+        /* 核心代运营配套 */
+        .pricing-section { padding: 100px 20px; }
+        .pricing-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .card { background: var(--white); padding: 50px 40px; border: 1px solid rgba(91, 79, 71, 0.1); position: relative; }
+        .card.featured { border: 2px solid var(--text-main); }
+        .price { font-size: 2.2rem; font-weight: 800; margin: 25px 0; }
+        .price span { font-size: 1rem; opacity: 0.5; }
+        ul { list-style: none; margin-bottom: 35px; }
+        li { margin-bottom: 12px; display: flex; align-items: flex-start; font-size: 0.95rem; }
+        li::before { content: "•"; color: var(--accent); margin-right: 10px; font-weight: bold; }
 
-        .btn { display: inline-block; background-color: var(--text-main); color: var(--bg-color); padding: 18px 35px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer; }
+        /* FAQ 板块 */
+        .faq-section { max-width: 800px; margin: 0 auto; padding: 100px 20px; }
+        .faq-item { margin-bottom: 30px; border-bottom: 1px solid rgba(91, 79, 71, 0.1); padding-bottom: 20px; }
+        .faq-item h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; color: var(--text-main); }
+        .faq-item p { font-size: 0.95rem; opacity: 0.8; }
+
+        .btn { display: inline-block; background-color: var(--text-main); color: var(--bg-color); padding: 16px 30px; text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s; }
         .btn:hover { background-color: var(--accent); color: var(--white); }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid rgba(91, 79, 71, 0.1); font-size: 0.9rem; opacity: 0.8; }
+        footer { padding: 60px 20px; text-align: center; background: #eeebe6; font-size: 0.85rem; }
 
         @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 30px; }
-            .logo img { height: 120px; }
             .hero { text-align: center; }
             .pricing-container { grid-template-columns: 1fr; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
@@ -66,34 +70,41 @@
 
     <nav>
         <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
-        <a href="https://wa.me/60172257975" class="btn">立即咨询</a>
+        <a href="https://wa.me/60176676597" class="btn" style="padding: 10px 20px;">联系我们</a>
     </nav>
 
     <section class="hero">
-        <h1>LiberTide Studio<br>内容驱动·增长合伙人</h1>
-        <p>我们不仅提供代运营，更通过聚光广告投放与博主种草矩阵，为品牌在马新市场构建完整的获客闭环。</p>
+        <h1>LiberTide Studio<br>马新小红书增长专家</h1>
+        <p>结合 AI 建模与深度市场洞察，我们提供专业的内容代运营及专项增长方案，助力品牌实现从曝光到转化的闭环。</p>
+        <a href="#services" class="btn">探索服务方案</a>
     </section>
 
-    <section class="capability-section">
-        <h2 class="section-title">我们的核心服务内容</h2>
+    <section class="addon-services" id="services">
+        <h2 class="section-title">专项营销服务</h2>
         <div class="capability-container">
             <div class="cap-card">
+                <div class="service-tag">One-off / Project</div>
                 <h3>专业号认证</h3>
-                <p>协助企业完成小红书蓝V认证，解锁商业插件、私信权限及官方营销工具，建立品牌信任背书。</p>
+                <p>协助企业完成小红书蓝V认证，解锁商业工具，建立官方信任背书。</p>
+                <a href="https://wa.me/60176676597" style="color:var(--accent); font-size:0.9rem; font-weight:700; text-decoration:none;">立即办理 →</a>
             </div>
             <div class="cap-card">
+                <div class="service-tag">Performance</div>
                 <h3>聚光广告投放</h3>
-                <p>通过聚光平台进行搜索排位与信息流投放，精准锁定马新地区高意向客户，实现低成本获客。</p>
+                <p>精准搜索/信息流投放，锁定马新地区意向客户，实现商业流量闭环。</p>
+                <a href="https://wa.me/60176676597" style="color:var(--accent); font-size:0.9rem; font-weight:700; text-decoration:none;">获取投流方案 →</a>
             </div>
             <div class="cap-card">
-                <h3>博主/达人种草</h3>
-                <p>筛选匹配品牌调性的本地KOL/KOC进行内容共创，引爆社交媒体声量，建立用户真实口碑。</p>
+                <div class="service-tag">Seeding</div>
+                <h3>博主种草</h3>
+                <p>本地 KOL/KOC 矩阵共创，建立品牌真实口碑与社交声量。</p>
+                <a href="https://wa.me/60176676597" style="color:var(--accent); font-size:0.9rem; font-weight:700; text-decoration:none;">联系选人 →</a>
             </div>
         </div>
     </section>
 
-    <section class="pricing-section" id="pricing">
-        <h2 class="section-title">代运营服务配套</h2>
+    <section class="pricing-section">
+        <h2 class="section-title">内容管理配套</h2>
         <div class="pricing-container">
             <div class="card">
                 <h3>月度内容配套</h3>
@@ -101,32 +112,53 @@
                 <ul>
                     <li>4 篇深度爆款笔记撰写</li>
                     <li>品牌视觉调性定位</li>
-                    <li>图片/短视频精修设计</li>
-                    <li>每月数据复盘分析报告</li>
-                    <li>赠：账号基础SEO关键词布局</li>
+                    <li>笔记图片/短视频制作</li>
+                    <li>每月数据复盘报告</li>
                 </ul>
-                <a href="https://wa.me/60172257975" class="btn">立即开始</a>
+                <a href="https://wa.me/60176676597" class="btn" style="width:100%; text-align:center;">立即开始</a>
             </div>
 
             <div class="card featured">
-                <div class="tag">最受欢迎</div>
                 <h3>基础代运营配套</h3>
                 <div class="price">RM 2,499 <span>/月</span></div>
                 <ul>
                     <li>8 篇高质量笔记推送</li>
-                    <li>专业号搭建与运营维护</li>
-                    <li>评论区舆情监控与转化引导</li>
-                    <li><strong>聚光广告投放策略规划</strong></li>
-                    <li><strong>博主种草资源对接建议</strong></li>
+                    <li>专业号搭建与视觉维护</li>
+                    <li>评论区转化引导与互动</li>
+                    <li>账号 SEO 关键词深度布局</li>
                 </ul>
-                <a href="https://wa.me/60172257975" class="btn">联系增长专家</a>
+                <a href="https://wa.me/60176676597" class="btn" style="width:100%; text-align:center; background-color:var(--accent); color:white;">联系咨询</a>
             </div>
         </div>
     </section>
 
+    <section class="faq-section">
+        <h2 class="section-title">常见问题 FAQ</h2>
+        
+        <div class="faq-item">
+            <h4>代运营配套包含广告费吗？</h4>
+            <p>不包含。代运营费用为我们的内容创作与管理服务费，聚光广告投放的广告费需由客户直接充值至小红书官方后台，或由我们代办开户。</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>专业号认证有什么好处？</h4>
+            <p>认证蓝V后，账号将拥有官方认证标识，可使用营销工具、私信组件、搜索关键词购买等，同时显著降低笔记被判定为违规广告的风险。</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>通常多久能看到效果？</h4>
+            <p>小红书是一个内容沉淀平台。通常前 1-2 个月为账号调性建立期，通过持续优质的内容输出和 SEO 布局，3-6 个月将进入稳定的流量与转化增长期。</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>博主种草是如何收费的？</h4>
+            <p>我们会根据您的预算筛选匹配的本地达人，费用通常由“博主稿费”和“LiberTide 筛选/对接服务费”组成。具体需根据推广规模进行报价。</p>
+        </div>
+    </section>
+
     <footer>
-        <p>Email: libertidmy@gmail.com | WhatsApp: +6017-2257975</p>
-        <p style="margin-top: 15px;">© 2026 LIBERTIDE STUDIO. Masai, Johor, Malaysia.</p>
+        <p>Email: libertidmy@gmail.com | WhatsApp: +6017-6676597</p>
+        <p style="margin-top: 15px; opacity: 0.6;">© 2026 LIBERTIDE STUDIO. Masai, Johor, Malaysia.</p>
     </footer>
 
 </body>
