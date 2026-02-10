@@ -1,0 +1,31 @@
+/* 添加到你的 style.css */
+.hero {
+    background: #0a0a0a; /* 深色背景符合专业定位 */
+    color: #ffffff;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card h3 {
+    color: #0074D9;
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    padding: 60px 5%;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.cta-button {
+    text-decoration: none;
+    background: #ff2442; /* 小红书红，代表行业属性 */
+    color: white;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+}
