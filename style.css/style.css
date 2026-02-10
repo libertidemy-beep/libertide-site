@@ -29,3 +29,90 @@
     border-radius: 5px;
     font-weight: bold;
 }
+/* 价格表整体布局 */
+.pricing-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.pricing-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* 突出显示中间的卡片 */
+.pricing-card.featured {
+    border: 2px solid #ff2442; /* 小红书红 */
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 36, 66, 0.1);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff2442;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #888;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.pricing-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    color: #666;
+}
+
+.price-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.pricing-card.featured .price-btn {
+    background: #ff2442;
+}
+
+.price-btn:hover {
+    opacity: 0.8;
+}
