@@ -8,184 +8,209 @@
     <style>
         :root {
             --bg: #fdfdfc;
-            --text-main: #3d3631; /* 深灰色，保证可读性 */
-            --text-sub: #6b635e;  /* 中灰色，用于副标题和说明 */
+            --text-main: #2d2926;
+            --text-sub: #6b635e;
             --accent: #FF2442;
-            --border: rgba(0, 0, 0, 0.08);
+            --border: rgba(0, 0, 0, 0.06);
             --white: #ffffff;
-            --container-w: 800px; /* 紧凑型阅读版面 */
+            --container-w: 800px;
         }
 
+        /* 基础重置 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            line-height: 1.8; /* 增加行间距，更易阅读 */
+            line-height: 1.8;
             font-size: 15px;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* 极简导航 */
-        nav { max-width: var(--container-w); margin: 0 auto; padding: 50px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 90px; width: auto; }
-        
+        /* 动画初始状态 */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 智能导航栏 */
+        nav { 
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            transition: all 0.3s; padding: 30px 0;
+        }
+        nav.scrolled { 
+            padding: 15px 0; background: rgba(253, 253, 252, 0.8); 
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+        }
+        .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 90px; width: auto; transition: 0.3s; }
+        nav.scrolled .logo img { height: 60px; }
+
         .nav-right { display: flex; align-items: center; gap: 24px; }
         .lang-switch { 
             background: none; border: none; color: var(--text-sub); 
             cursor: pointer; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
         }
 
-        /* 精致按钮 */
+        /* 按钮动效升级 */
         .btn-outline { 
-            display: inline-block; padding: 8px 24px; 
+            display: inline-block; padding: 10px 28px; 
             border: 1px solid var(--text-main); color: var(--text-main); 
             text-decoration: none; font-size: 0.75rem; font-weight: 600;
             border-radius: 100px; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1); 
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+            position: relative; overflow: hidden;
         }
-        .btn-outline:hover { background: var(--text-main); color: var(--bg); }
+        .btn-outline:hover { 
+            background: var(--text-main); color: var(--bg); 
+            transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-        /* 内容容器 */
+        /* Hero 区间 */
         .container { max-width: var(--container-w); margin: 0 auto; padding: 0 20px; }
-
-        /* Hero：优化排版密度 */
-        .hero { padding: 40px 0 100px; }
+        .hero { padding: 200px 0 120px; text-align: left; }
         .hero h1 { 
-            font-size: 2.8rem; line-height: 1.2; font-weight: 500; 
-            letter-spacing: -1.5px; margin-bottom: 25px; 
+            font-size: 3rem; line-height: 1.15; font-weight: 500; 
+            letter-spacing: -2px; margin-bottom: 30px; 
         }
-        .hero p { font-size: 1.1rem; color: var(--text-sub); font-weight: 400; max-width: 620px; }
+        .hero p { font-size: 1.15rem; color: var(--text-sub); font-weight: 400; max-width: 600px; }
 
-        /* 通用标题样式 */
-        .section-tag { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 12px; display: block; }
-        .section-title { font-size: 1.8rem; margin-bottom: 50px; font-weight: 500; letter-spacing: -0.5px; }
+        /* 标签与标题 */
+        .section-tag { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .section-title { font-size: 1.8rem; margin-bottom: 60px; font-weight: 500; letter-spacing: -0.5px; }
 
-        /* 核心优势：增加文字颜色深度 */
-        .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 120px; border-top: 1.5px solid var(--text-main); padding-top: 40px; }
+        /* 优势板块：Hover 放大效果 */
+        .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-bottom: 150px; border-top: 1px solid #ddd; padding-top: 50px; }
         .edge-item h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600; }
-        .edge-item p { font-size: 0.9rem; color: var(--text-sub); font-weight: 400; }
+        .edge-item p { font-size: 0.9rem; color: var(--text-sub); transition: 0.3s; }
+        .edge-item:hover p { color: var(--text-main); }
 
-        /* 服务卡片：增加对比度 */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 120px; }
-        .service-tile { padding: 40px; border: 1px solid var(--border); background: var(--white); transition: 0.4s; }
-        .service-tile:hover { border-color: var(--text-main); }
+        /* 服务卡片：增加深度感 */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-bottom: 150px; }
+        .service-tile { padding: 45px; border: 1px solid var(--border); background: var(--white); transition: 0.5s; cursor: default; }
+        .service-tile:hover { 
+            border-color: transparent; box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            transform: translateY(-5px);
+        }
         .service-tile h3 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; }
-        .service-tile p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 30px; font-weight: 400; }
+        .service-tile p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 30px; }
 
-        /* 价格卡片：更稳重的对比 */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 120px; }
-        .pricing-card { padding: 60px 50px; border: 1px solid var(--border); }
-        .pricing-card.featured { background: var(--text-main); color: var(--bg); border: none; }
-        .price { font-size: 2.2rem; font-weight: 500; margin: 25px 0; letter-spacing: -1px; }
+        /* 价格板块：主次分明 */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 150px; }
+        .pricing-card { padding: 70px 50px; border: 1px solid var(--border); transition: 0.5s; }
+        .pricing-card.featured { background: var(--text-main); color: var(--bg); border: none; transform: scale(1.03); }
+        .price { font-size: 2.4rem; font-weight: 500; margin: 30px 0; letter-spacing: -1px; }
         
-        ul { list-style: none; margin-bottom: 45px; }
-        li { padding: 10px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--text-sub); }
-        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
-        .pricing-card.featured .price { color: #fff; }
+        ul { list-style: none; margin-bottom: 50px; }
+        li { padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--text-sub); }
+        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
 
-        /* FAQ：两栏排列，节省空间 */
-        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid var(--border); padding-top: 60px; margin-bottom: 100px; }
-        .faq-item h4 { font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
-        .faq-item p { font-size: 0.95rem; color: var(--text-sub); font-weight: 400; }
+        /* FAQ */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; border-top: 1px solid var(--border); padding-top: 80px; margin-bottom: 120px; }
+        .faq-item h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600; }
+        .faq-item p { font-size: 0.95rem; color: var(--text-sub); }
 
-        footer { text-align: center; padding: 100px 20px; color: var(--text-sub); opacity: 0.6; font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 120px 20px; color: var(--text-sub); opacity: 0.5; font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid var(--border); }
 
         [lang="en"] { display: none; }
         @media (max-width: 768px) {
-            .edge-grid, .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+            .edge-grid, .pricing-grid, .faq-grid { grid-template-columns: 1fr; gap: 30px; }
             .hero h1 { font-size: 2.2rem; }
+            .pricing-card.featured { transform: scale(1); }
+            .hero { padding: 150px 0 80px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
-        <div class="nav-right">
-            <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
-            <a href="https://wa.me/60176676597" class="btn-outline">Connect</a>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
+            <div class="nav-right">
+                <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
+                <a href="https://wa.me/60176676597" class="btn-outline">Connect</a>
+            </div>
         </div>
     </nav>
 
     <div class="container">
-        <section class="hero">
-            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度" data-en="Deep Insight.<br>High Definition Growth.">
+        <section class="hero reveal">
+            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度" data-en="Native Insights.<br>Growth, Redefined.">
                 深度洞察本土市场<br>定义内容增长新高度
             </h1>
-            <p data-zh="我们结合精细的内容策略与数据回测，协助品牌在马新小红书市场构建具确定性的增长资产。" 
-               data-en="We combine refined strategy with data backtesting to build deterministic growth assets in MY/SG XHS markets.">
-               我们结合精细的内容策略与数据回测，协助品牌在马新小红书市场构建具确定性的增长资产。
+            <p data-zh="LiberTide Studio 结合精细内容策略与真实数据回测，协助品牌在马新小红书生态中构建长效增长资产。" 
+               data-en="We combine refined strategy with real-world data to build long-term brand equity on Xiaohongshu.">
+               LiberTide Studio 结合精细内容策略与真实数据回测，协助品牌在马新小红书生态中构建长效增长资产。
             </p>
         </section>
 
-        <div class="edge-grid">
+        <div class="edge-grid reveal">
             <div class="edge-item">
-                <h4 data-zh="本土化洞察" data-en="Native Edge">本土化洞察</h4>
-                <p data-zh="深入理解马新用户的语言习惯与文化语境，拒绝无效内容。" data-en="Deep understanding of MY/SG cultural nuances and language habits.">深入理解马新用户的语言习惯与文化语境，拒绝无效内容。</p>
+                <h4 data-zh="本土视角" data-en="Native Logic">本土视角</h4>
+                <p data-zh="拒绝生搬硬套，用马新用户听得懂、愿意看的方式讲品牌故事。" data-en="Avoid generic content; speak the language that resonates with local users.">拒绝生搬硬套，用马新用户听得懂、愿意看的方式讲品牌故事。</p>
             </div>
             <div class="edge-item">
-                <h4 data-zh="全案交付" data-en="Full Cycle">全案交付</h4>
-                <p data-zh="从账号诊断到投流闭环，提供一站式专业代运营支持。" data-en="Comprehensive support from account audit to commercial ad loops.">从账号诊断到投流闭环，提供一站式专业代运营支持。</p>
+                <h4 data-zh="全案交付" data-en="End-to-End">全案交付</h4>
+                <p data-zh="从开户认证到广告投流，我们处理所有繁琐细节，您只需关注增长。" data-en="From verification to ads; we handle the details, you focus on growth.">从开户认证到广告投流，我们处理所有繁琐细节，您只需关注增长。</p>
             </div>
             <div class="edge-item">
-                <h4 data-zh="结果导向" data-en="Result Driven">结果导向</h4>
-                <p data-zh="所有策略旨在提升品牌真实转化，而非虚假的曝光数据。" data-en="All strategies are built for real conversions, not vanity metrics.">所有策略旨在提升品牌真实转化，而非虚假的曝光数据。</p>
+                <h4 data-zh="确定性增长" data-en="Certainty">确定性增长</h4>
+                <p data-zh="依托深度市场回测，将不确定的流量转化为确定的商业获客。" data-en="Transforming unpredictable traffic into predictable business leads.">依托深度市场回测，将不确定的流量转化为确定的商业获客。</p>
             </div>
         </div>
 
-        <span class="section-tag">Services</span>
-        <h2 class="section-title" data-zh="专项营销服务" data-en="Our Services">专项营销服务</h2>
-        <div class="services-grid">
+        <span class="section-tag reveal">Expertise</span>
+        <h2 class="section-title reveal" data-zh="专项营销服务" data-en="Our Services">专项营销服务</h2>
+        <div class="services-grid reveal">
             <div class="service-tile">
                 <h3 data-zh="专业号认证" data-en="Verification">专业号认证</h3>
-                <p data-zh="协助完成官方蓝V认证，开启品牌商业权限与流量工具。" data-en="Official Blue V verification & business tools enablement.">协助完成官方蓝V认证，开启品牌商业权限与流量工具。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="咨询方案" data-en="Consult">咨询方案</a>
+                <p data-zh="官方蓝V背书，解锁完整商业组件与营销工具。" data-en="Get official Blue V status and unlock professional tools.">官方蓝V背书，解锁完整商业组件与营销工具。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="立即咨询" data-en="Consult">立即咨询</a>
             </div>
             <div class="service-tile">
                 <h3 data-zh="聚光广告投放" data-en="Spotlight Ads">聚光广告投放</h3>
-                <p data-zh="精准流量渗透，锁定马新地区高意向受众实现高效获客。" data-en="Precise traffic targeting high-intent audiences in MY/SG.">精准流量渗透，锁定马新地区高意向受众实现高效获客。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="获取报价" data-en="Inquire">获取报价</a>
+                <p data-zh="基于受众画像的精准投流，优化获客成本与转化率。" data-en="Targeted ad spend optimized for lower CAC and higher ROI.">基于受众画像的精准投流，优化获客成本与转化率。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="获取方案" data-en="Strategy">获取方案</a>
             </div>
             <div class="service-tile">
                 <h3 data-zh="博主种草矩阵" data-en="KOL Matrix">博主种草矩阵</h3>
-                <p data-zh="对接本土优质博主，建立真实的社交媒体口碑与品牌声量。" data-en="Connecting quality local influencers for authentic reputation.">对接本土优质博主，建立真实的社交媒体口碑与品牌声量。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="开启招募" data-en="Recruit">开启招募</a>
+                <p data-zh="联动本土KOL/KOC，通过共创引发社交裂变与口碑。" data-en="Connect with local influencers to build organic social trust.">联动本土KOL/KOC，通过共创引发社交裂变与口碑。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="开始招募" data-en="Recruit">开始招募</a>
             </div>
         </div>
 
-        <span class="section-tag">Pricing</span>
-        <h2 class="section-title" data-zh="代运营配套" data-en="Management Plans">代运营配套</h2>
-        <div class="pricing-grid">
+        <span class="section-tag reveal">Investment</span>
+        <h2 class="section-title reveal" data-zh="内容代运营配套" data-en="Growth Plans">内容代运营配套</h2>
+        <div class="pricing-grid reveal">
             <div class="pricing-card">
-                <h3 data-zh="月度内容配套" data-en="Starter">月度内容配套</h3>
+                <h3 data-zh="月度内容配套" data-en="Essential">月度内容配套</h3>
                 <div class="price">RM 1,499</div>
-                <ul data-zh="<li>4 篇原创爆款笔记撰写</li><li>品牌视觉调性定位</li><li>笔记图文/短视频设计</li><li>月度运营数据复盘</li>"
-                    data-en="<li>4 Original Viral Posts</li><li>Visual Identity Positioning</li><li>Image/Video Design</li><li>Data Performance Report</li>">
-                    <li>4 篇原创爆款笔记撰写</li><li>品牌视觉调性定位</li><li>笔记图文/短视频设计</li><li>月度运营数据复盘</li>
+                <ul data-zh="<li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期</li><li>月度运营数据多维复盘</li>"
+                    data-en="<li>4 Original High-quality Posts</li><li>Visual Tone Positioning</li><li>Image & Video Retouching</li><li>Data Performance Analysis</li>">
+                    <li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期</li><li>月度运营数据多维复盘</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="咨询合作" data-en="Start Now">咨询合作</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3 data-zh="深度代运营配套" data-en="Growth Pro">深度代运营配套</h3>
+                <div class="price">RM 2,499</div>
+                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与转化沉淀</li><li>SEO 搜索词优化布局</li>"
+                    data-en="<li>8 Premium Weekly Postings</li><li>Full Visual Strategy Setup</li><li>Lead Generation & Engagement</li><li>SEO Keyword Optimization</li>">
+                    <li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与转化沉淀</li><li>SEO 搜索词优化布局</li>
                 </ul>
                 <a href="https://wa.me/60176676597" class="btn-outline" data-zh="立即预约" data-en="Book Now">立即预约</a>
             </div>
-            <div class="pricing-card featured">
-                <h3 data-zh="基础代运营配套" data-en="Growth">基础代运营配套</h3>
-                <div class="price">RM 2,499</div>
-                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案账号视觉体系搭建</li><li>评论区转化引导与互动</li><li>关键词 SEO 深度布局</li>"
-                    data-en="<li>8 Premium Posts</li><li>Full Visual Identity Setup</li><li>Conversion Support</li><li>In-depth SEO Strategy</li>">
-                    <li>8 篇高质量笔记推送</li><li>全案账号视觉体系搭建</li><li>评论区转化引导与互动</li><li>关键词 SEO 深度布局</li>
-                </ul>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="联系咨询" data-en="Enquire">联系咨询</a>
-            </div>
         </div>
 
-        <h2 class="section-title" data-zh="常见问题" data-en="Questions">常见问题</h2>
-        <div class="faq-grid">
+        <h2 class="section-title reveal" data-zh="常见问题" data-en="FAQ">常见问题</h2>
+        <div class="faq-grid reveal">
             <div class="faq-item">
-                <h4 data-zh="关于广告费用？" data-en="Ad Budget?">关于广告费用？</h4>
-                <p data-zh="配套费不含广告投放费。投放金额由客户充值，我们负责策略与执行。" data-en="Fees exclude ad spend. Spend is topped up by clients directly.">配套费不含广告投放费。投放金额由客户充值，我们负责策略与执行。</p>
+                <h4 data-zh="代运营包含博主费用吗？" data-en="Influencer Fees?">代运营包含博主费用吗？</h4>
+                <p data-zh="配套费为我们的专业服务费。博主稿费或样品费用需由品牌方承担，我们负责筛选与对接。" data-en="No. Influencer or sample costs are separate; we manage the recruitment and vetting process.">配套费为我们的专业服务费。博主稿费或样品费用需由品牌方承担，我们负责筛选与对接。</p>
             </div>
             <div class="faq-item">
-                <h4 data-zh="如何衡量增长？" data-en="Measurement?">如何衡量增长？</h4>
-                <p data-zh="除了基础的互动量，我们更关注咨询量（Leads）与品牌搜索词的提升。" data-en="Beyond engagement, we focus on Leads and brand search uplift.">除了基础的互动量，我们更关注咨询量（Leads）与品牌搜索词的提升。</p>
+                <h4 data-zh="如何保证内容质量？" data-en="Quality Control?">如何保证内容质量？</h4>
+                <p data-zh="所有内容均由本土团队撰写并经过两轮内部审核，确保符合马新受众审美与品牌调性。" data-en="Content is crafted by local experts and double-checked for cultural and brand alignment.">所有内容均由本土团队撰写并经过两轮内部审核，确保符合马新受众审美与品牌调性。</p>
             </div>
         </div>
     </div>
@@ -195,6 +220,7 @@
     </footer>
 
     <script>
+        // 语言切换
         let currentLang = 'zh';
         function toggleLang() {
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -206,6 +232,25 @@
             });
             document.querySelector('.lang-switch').innerText = currentLang === 'zh' ? 'EN / 中文' : '中文 / EN';
         }
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // 滚动进入动画
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
