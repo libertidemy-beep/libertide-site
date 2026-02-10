@@ -4,105 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiberTide Studio | 深度洞察·内容增长</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fdfdfc; /* 极致纯净的米白 */
-            --text: #3d3631; /* 柔和的深灰 */
+            --bg: #fdfdfc;
+            --text-main: #3d3631; /* 深灰色，保证可读性 */
+            --text-sub: #6b635e;  /* 中灰色，用于副标题和说明 */
             --accent: #FF2442;
             --border: rgba(0, 0, 0, 0.08);
             --white: #ffffff;
-            --container-w: 860px; /* 进一步收窄，建立高级感 */
+            --container-w: 800px; /* 紧凑型阅读版面 */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: var(--bg); 
-            color: var(--text); 
+            color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            line-height: 1.7;
-            font-size: 15px; /* 回归标准字号，更显精致 */
+            line-height: 1.8; /* 增加行间距，更易阅读 */
+            font-size: 15px;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 导航 */
-        nav { max-width: var(--container-w); margin: 0 auto; padding: 40px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 90px; width: auto; } /* 按要求调至 90px */
+        /* 极简导航 */
+        nav { max-width: var(--container-w); margin: 0 auto; padding: 50px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 90px; width: auto; }
         
-        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
         .lang-switch { 
-            background: none; border: none; color: var(--text); opacity: 0.5;
-            cursor: pointer; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s;
+            background: none; border: none; color: var(--text-sub); 
+            cursor: pointer; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
         }
-        .lang-switch:hover { opacity: 1; }
 
-        /* 极简 Hero */
-        .hero { max-width: var(--container-w); margin: 0 auto; padding: 80px 20px 100px; }
-        .hero h1 { 
-            font-size: 2.6rem; line-height: 1.25; font-weight: 500; 
-            letter-spacing: -1px; margin-bottom: 20px; 
+        /* 精致按钮 */
+        .btn-outline { 
+            display: inline-block; padding: 8px 24px; 
+            border: 1px solid var(--text-main); color: var(--text-main); 
+            text-decoration: none; font-size: 0.75rem; font-weight: 600;
+            border-radius: 100px; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1); 
         }
-        .hero p { font-size: 1.05rem; opacity: 0.6; font-weight: 300; max-width: 600px; }
+        .btn-outline:hover { background: var(--text-main); color: var(--bg); }
 
         /* 内容容器 */
         .container { max-width: var(--container-w); margin: 0 auto; padding: 0 20px; }
-        .section-tag { font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .section-title { font-size: 1.6rem; margin-bottom: 40px; font-weight: 500; letter-spacing: -0.5px; }
 
-        /* 核心优势：去掉色块，改用极简排版 */
-        .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 100px; border-top: 1px solid var(--border); padding-top: 40px; }
-        .edge-item h4 { font-size: 0.95rem; margin-bottom: 10px; font-weight: 700; }
-        .edge-item p { font-size: 0.85rem; opacity: 0.5; font-weight: 300; }
-
-        /* 服务矩阵：轻盈线条感 */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 100px; }
-        .service-tile { padding: 30px; border: 1px solid var(--border); transition: 0.4s; }
-        .service-tile:hover { border-color: var(--text); transform: translateY(-2px); }
-        .service-tile h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
-        .service-tile p { font-size: 0.9rem; opacity: 0.5; margin-bottom: 25px; font-weight: 300; }
-
-        /* 合作流程：纵向极简步骤 */
-        .process-wrap { padding-bottom: 100px; }
-        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .step { border-top: 1px solid var(--text); padding-top: 15px; }
-        .step-num { font-size: 0.7rem; font-weight: 700; opacity: 0.3; display: block; margin-bottom: 10px; }
-        .step h4 { font-size: 1rem; margin-bottom: 10px; }
-        .step p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
-
-        /* 价格卡片：去掉笨重边框 */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
-        .pricing-card { padding: 50px; border: 1px solid var(--border); position: relative; }
-        .pricing-card.featured { background: var(--text); color: var(--bg); border: none; }
-        .price { font-size: 2rem; font-weight: 500; margin: 20px 0; letter-spacing: -1px; }
-        ul { list-style: none; margin-bottom: 40px; }
-        li { padding: 8px 0; font-size: 0.85rem; opacity: 0.7; border-bottom: 1px solid rgba(0,0,0,0.03); }
-        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.05); }
-
-        /* 按钮：精致胶囊款 */
-        .btn { 
-            display: inline-block; padding: 10px 24px; 
-            border: 1px solid var(--text); color: var(--text); 
-            text-decoration: none; font-size: 0.75rem; font-weight: 700;
-            border-radius: 100px; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s; 
+        /* Hero：优化排版密度 */
+        .hero { padding: 40px 0 100px; }
+        .hero h1 { 
+            font-size: 2.8rem; line-height: 1.2; font-weight: 500; 
+            letter-spacing: -1.5px; margin-bottom: 25px; 
         }
-        .btn:hover { background: var(--text); color: var(--bg); }
-        .pricing-card.featured .btn { border-color: var(--bg); color: var(--bg); }
-        .pricing-card.featured .btn:hover { background: var(--white); color: var(--text); border-color: var(--white); }
+        .hero p { font-size: 1.1rem; color: var(--text-sub); font-weight: 400; max-width: 620px; }
 
-        /* FAQ */
-        .faq-grid { border-top: 1px solid var(--border); padding-top: 60px; margin-bottom: 100px; }
-        .faq-item { margin-bottom: 30px; }
-        .faq-item h4 { font-size: 0.95rem; margin-bottom: 8px; font-weight: 700; }
-        .faq-item p { font-size: 0.9rem; opacity: 0.5; font-weight: 300; }
+        /* 通用标题样式 */
+        .section-tag { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+        .section-title { font-size: 1.8rem; margin-bottom: 50px; font-weight: 500; letter-spacing: -0.5px; }
 
-        footer { text-align: center; padding: 80px 20px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 1px; }
+        /* 核心优势：增加文字颜色深度 */
+        .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 120px; border-top: 1.5px solid var(--text-main); padding-top: 40px; }
+        .edge-item h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600; }
+        .edge-item p { font-size: 0.9rem; color: var(--text-sub); font-weight: 400; }
+
+        /* 服务卡片：增加对比度 */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 120px; }
+        .service-tile { padding: 40px; border: 1px solid var(--border); background: var(--white); transition: 0.4s; }
+        .service-tile:hover { border-color: var(--text-main); }
+        .service-tile h3 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; }
+        .service-tile p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 30px; font-weight: 400; }
+
+        /* 价格卡片：更稳重的对比 */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 120px; }
+        .pricing-card { padding: 60px 50px; border: 1px solid var(--border); }
+        .pricing-card.featured { background: var(--text-main); color: var(--bg); border: none; }
+        .price { font-size: 2.2rem; font-weight: 500; margin: 25px 0; letter-spacing: -1px; }
+        
+        ul { list-style: none; margin-bottom: 45px; }
+        li { padding: 10px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--text-sub); }
+        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+        .pricing-card.featured .price { color: #fff; }
+
+        /* FAQ：两栏排列，节省空间 */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid var(--border); padding-top: 60px; margin-bottom: 100px; }
+        .faq-item h4 { font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
+        .faq-item p { font-size: 0.95rem; color: var(--text-sub); font-weight: 400; }
+
+        footer { text-align: center; padding: 100px 20px; color: var(--text-sub); opacity: 0.6; font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid var(--border); }
 
         [lang="en"] { display: none; }
         @media (max-width: 768px) {
-            .edge-grid, .process-grid, .pricing-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+            .edge-grid, .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -112,33 +104,33 @@
         <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
         <div class="nav-right">
             <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
-            <a href="https://wa.me/60176676597" class="btn">Connect</a>
+            <a href="https://wa.me/60176676597" class="btn-outline">Connect</a>
         </div>
     </nav>
 
     <div class="container">
         <section class="hero">
-            <h1 data-zh="深度洞察本土市场<br>定义增长新高度" data-en="Native Insights<br>Defined Growth">
-                深度洞察本土市场<br>定义增长新高度
+            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度" data-en="Deep Insight.<br>High Definition Growth.">
+                深度洞察本土市场<br>定义内容增长新高度
             </h1>
-            <p data-zh="LiberTide Studio 专注于通过精细的内容策略与数据回测，协助品牌在马新小红书市场构建长期增长资产。" 
-               data-en="Specializing in refined content strategy and data backtesting to build long-term assets on XHS.">
-               LiberTide Studio 专注于通过精细的内容策略与数据回测，协助品牌在马新小红书市场构建长期增长资产。
+            <p data-zh="我们结合精细的内容策略与数据回测，协助品牌在马新小红书市场构建具确定性的增长资产。" 
+               data-en="We combine refined strategy with data backtesting to build deterministic growth assets in MY/SG XHS markets.">
+               我们结合精细的内容策略与数据回测，协助品牌在马新小红书市场构建具确定性的增长资产。
             </p>
         </section>
 
         <div class="edge-grid">
             <div class="edge-item">
-                <h4 data-zh="本土化洞察" data-en="Native Logic">本土化洞察</h4>
-                <p data-zh="深耕马新市场，理解本地用户的语言习惯与文化语境。" data-en="Deep understanding of MY/SG cultural contexts and language.">深耕马新市场，理解本地用户的语言习惯与文化语境。</p>
+                <h4 data-zh="本土化洞察" data-en="Native Edge">本土化洞察</h4>
+                <p data-zh="深入理解马新用户的语言习惯与文化语境，拒绝无效内容。" data-en="Deep understanding of MY/SG cultural nuances and language habits.">深入理解马新用户的语言习惯与文化语境，拒绝无效内容。</p>
             </div>
             <div class="edge-item">
-                <h4 data-zh="全案交付" data-en="Full Lifecycle">全案交付</h4>
-                <p data-zh="从账号诊断到投流闭环，提供一站式专业代运营支持。" data-en="One-stop professional management from audit to ad loop.">从账号诊断到投流闭环，提供一站式专业代运营支持。</p>
+                <h4 data-zh="全案交付" data-en="Full Cycle">全案交付</h4>
+                <p data-zh="从账号诊断到投流闭环，提供一站式专业代运营支持。" data-en="Comprehensive support from account audit to commercial ad loops.">从账号诊断到投流闭环，提供一站式专业代运营支持。</p>
             </div>
             <div class="edge-item">
-                <h4 data-zh="结果导向" data-en="ROI Focused">结果导向</h4>
-                <p data-zh="拒绝无效曝光，所有策略旨在提升品牌真实转化。" data-en="Rejecting vanity metrics; focused on real conversion.">拒绝无效曝光，所有策略旨在提升品牌真实转化。</p>
+                <h4 data-zh="结果导向" data-en="Result Driven">结果导向</h4>
+                <p data-zh="所有策略旨在提升品牌真实转化，而非虚假的曝光数据。" data-en="All strategies are built for real conversions, not vanity metrics.">所有策略旨在提升品牌真实转化，而非虚假的曝光数据。</p>
             </div>
         </div>
 
@@ -147,45 +139,18 @@
         <div class="services-grid">
             <div class="service-tile">
                 <h3 data-zh="专业号认证" data-en="Verification">专业号认证</h3>
-                <p data-zh="协助完成蓝V认证，开启品牌商业权限。" data-en="Official Blue V verification & business tools setup.">协助完成蓝V认证，开启品牌商业权限。</p>
-                <a href="https://wa.me/60176676597" class="btn" data-zh="立即咨询" data-en="Consult">立即咨询</a>
+                <p data-zh="协助完成官方蓝V认证，开启品牌商业权限与流量工具。" data-en="Official Blue V verification & business tools enablement.">协助完成官方蓝V认证，开启品牌商业权限与流量工具。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="咨询方案" data-en="Consult">咨询方案</a>
             </div>
             <div class="service-tile">
                 <h3 data-zh="聚光广告投放" data-en="Spotlight Ads">聚光广告投放</h3>
-                <p data-zh="精准流量渗透，锁定马新地区高意向受众。" data-en="Precise traffic penetration targeting high-intent audiences.">精准流量渗透，锁定马新地区高意向受众。</p>
-                <a href="https://wa.me/60176676597" class="btn" data-zh="获取方案" data-en="Plan">获取方案</a>
+                <p data-zh="精准流量渗透，锁定马新地区高意向受众实现高效获客。" data-en="Precise traffic targeting high-intent audiences in MY/SG.">精准流量渗透，锁定马新地区高意向受众实现高效获客。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="获取报价" data-en="Inquire">获取报价</a>
             </div>
             <div class="service-tile">
                 <h3 data-zh="博主种草矩阵" data-en="KOL Matrix">博主种草矩阵</h3>
-                <p data-zh="对接本土优质博主，建立真实的社交口碑。" data-en="Connecting with quality local influencers for reputation.">对接本土优质博主，建立真实的社交口碑。</p>
-                <a href="https://wa.me/60176676597" class="btn" data-zh="开启招募" data-en="Recruit">开启招募</a>
-            </div>
-        </div>
-
-        <span class="section-tag">Methodology</span>
-        <h2 class="section-title" data-zh="合作流程" data-en="Our Process">合作流程</h2>
-        <div class="process-wrap">
-            <div class="process-grid">
-                <div class="step">
-                    <span class="step-num">01</span>
-                    <h4 data-zh="深度诊断" data-en="Audit">深度诊断</h4>
-                    <p data-zh="剖析行业竞争与账号现状。" data-en="Analyze industry & account status.">剖析行业竞争与账号现状。</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">02</span>
-                    <h4 data-zh="方案共创" data-en="Strategy">方案共创</h4>
-                    <p data-zh="定制差异化内容与投流方向。" data-en="Custom content & ad direction.">定制差异化内容与投流方向。</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">03</span>
-                    <h4 data-zh="内容爆发" data-en="Execution">内容爆发</h4>
-                    <p data-zh="高质量内容持续引发生感。" data-en="Consistent high-quality content.">高质量内容持续引发生感。</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">04</span>
-                    <h4 data-zh="精准复盘" data-en="Review">精准复盘</h4>
-                    <p data-zh="追踪转化数据，动态优化策略。" data-en="Track data & optimize strategy.">追踪转化数据，动态优化策略。</p>
-                </div>
+                <p data-zh="对接本土优质博主，建立真实的社交媒体口碑与品牌声量。" data-en="Connecting quality local influencers for authentic reputation.">对接本土优质博主，建立真实的社交媒体口碑与品牌声量。</p>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="开启招募" data-en="Recruit">开启招募</a>
             </div>
         </div>
 
@@ -193,33 +158,34 @@
         <h2 class="section-title" data-zh="代运营配套" data-en="Management Plans">代运营配套</h2>
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3 data-zh="月度内容" data-en="Starter">月度内容</h3>
+                <h3 data-zh="月度内容配套" data-en="Starter">月度内容配套</h3>
                 <div class="price">RM 1,499</div>
-                <ul data-zh="<li>4 篇原创笔记撰写</li><li>品牌调性视觉定位</li><li>笔记图文/视频精修</li><li>数据复盘报告</li>"
-                    data-en="<li>4 Original Posts</li><li>Visual Positioning</li><li>Image/Video Design</li><li>Data Report</li>">
-                    <li>4 篇原创笔记撰写</li><li>品牌调性视觉定位</li><li>笔记图文/视频精修</li><li>数据复盘报告</li>
+                <ul data-zh="<li>4 篇原创爆款笔记撰写</li><li>品牌视觉调性定位</li><li>笔记图文/短视频设计</li><li>月度运营数据复盘</li>"
+                    data-en="<li>4 Original Viral Posts</li><li>Visual Identity Positioning</li><li>Image/Video Design</li><li>Data Performance Report</li>">
+                    <li>4 篇原创爆款笔记撰写</li><li>品牌视觉调性定位</li><li>笔记图文/短视频设计</li><li>月度运营数据复盘</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn" data-zh="立即开始" data-en="Start">立即开始</a>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="立即预约" data-en="Book Now">立即预约</a>
             </div>
             <div class="pricing-card featured">
-                <h3 data-zh="基础代运营" data-en="Growth">基础代运营</h3>
+                <h3 data-zh="基础代运营配套" data-en="Growth">基础代运营配套</h3>
                 <div class="price">RM 2,499</div>
-                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案账号视觉搭建</li><li>评论区转化引导</li><li>关键词 SEO 布局</li>"
-                    data-en="<li>8 Premium Posts</li><li>Full Visual Setup</li><li>Engagement Support</li><li>SEO Layout</li>">
-                    <li>8 篇高质量笔记推送</li><li>全案账号视觉搭建</li><li>评论区转化引导</li><li>关键词 SEO 布局</li>
+                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案账号视觉体系搭建</li><li>评论区转化引导与互动</li><li>关键词 SEO 深度布局</li>"
+                    data-en="<li>8 Premium Posts</li><li>Full Visual Identity Setup</li><li>Conversion Support</li><li>In-depth SEO Strategy</li>">
+                    <li>8 篇高质量笔记推送</li><li>全案账号视觉体系搭建</li><li>评论区转化引导与互动</li><li>关键词 SEO 深度布局</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn" data-zh="联系咨询" data-en="Enquire">联系咨询</a>
+                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="联系咨询" data-en="Enquire">联系咨询</a>
             </div>
         </div>
 
+        <h2 class="section-title" data-zh="常见问题" data-en="Questions">常见问题</h2>
         <div class="faq-grid">
             <div class="faq-item">
-                <h4 data-zh="关于广告费用？" data-en="About Ad Budget?">关于广告费用？</h4>
-                <p data-zh="配套不包含广告费。广告金额由客户充值至后台，我们负责策略优化。" data-en="Excluded. Ad spend is topped up by clients directly.">配套不包含广告费。广告金额由客户充值至后台，我们负责策略优化。</p>
+                <h4 data-zh="关于广告费用？" data-en="Ad Budget?">关于广告费用？</h4>
+                <p data-zh="配套费不含广告投放费。投放金额由客户充值，我们负责策略与执行。" data-en="Fees exclude ad spend. Spend is topped up by clients directly.">配套费不含广告投放费。投放金额由客户充值，我们负责策略与执行。</p>
             </div>
             <div class="faq-item">
-                <h4 data-zh="什么时候能看到增长？" data-en="When to see growth?">什么时候能看到增长？</h4>
-                <p data-zh="通常 1 个月完成基础建设，2-3 个月进入数据爆发与稳定转化期。" data-en="Setup in month 1; spike & conversion in month 2-3.">通常 1 个月完成基础建设，2-3 个月进入数据爆发与稳定转化期。</p>
+                <h4 data-zh="如何衡量增长？" data-en="Measurement?">如何衡量增长？</h4>
+                <p data-zh="除了基础的互动量，我们更关注咨询量（Leads）与品牌搜索词的提升。" data-en="Beyond engagement, we focus on Leads and brand search uplift.">除了基础的互动量，我们更关注咨询量（Leads）与品牌搜索词的提升。</p>
             </div>
         </div>
     </div>
