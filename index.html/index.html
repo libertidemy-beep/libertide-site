@@ -23,33 +23,32 @@
             line-height: 1.6;
         }
 
-        /* --- 导航栏优化：超大 Logo 适配 --- */
+        /* --- 导航栏优化：让 Logo 显眼的关键 --- */
         nav {
             max-width: var(--container-max);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 50px 20px; /* 进一步增加上下边距 */
+            padding: 40px 20px; /* 增加上下内边距，给 Logo 呼吸空间 */
         }
 
         .logo img {
-            height: 200px; /* 【核心修改】Logo 高度设置为 200px */
-            width: auto;
-            max-width: 90vw; /* 确保在手机上不会超出屏幕 */
+            height: 100px; /* 【核心修改】将 Logo 高度从 60px 提升到 100px */
+            width: auto;   /* 保持比例 */
             display: block;
             transition: transform 0.3s ease;
         }
 
         .logo img:hover {
-            transform: scale(1.02);
+            transform: scale(1.05); /* 鼠标悬停微放大 */
         }
 
         /* --- 英雄板块 --- */
         .hero {
             max-width: var(--container-max);
             margin: 0 auto;
-            padding: 80px 20px 120px;
+            padding: 100px 20px;
             text-align: left;
         }
 
@@ -116,7 +115,6 @@
             color: var(--bg-color);
             padding: 20px 40px;
             text-decoration: none;
-            border-radius: 2px;
             font-weight: 700;
             font-size: 1rem;
             letter-spacing: 1.5px;
@@ -135,11 +133,11 @@
             font-size: 1rem;
         }
 
-        /* --- 移动端适配 --- */
+        /* --- 移动端适配：Logo 自动缩小防止溢出 --- */
         @media (max-width: 768px) {
-            nav { padding: 40px 20px; flex-direction: column; gap: 30px; }
-            .logo img { height: 120px; } /* 手机上 200px 太大，自动降为 120px */
-            .hero { text-align: center; }
+            nav { padding: 30px 20px; }
+            .logo img { height: 70px; } /* 手机端适当缩小，保持美观 */
+            .hero { text-align: center; padding: 60px 20px; }
             .hero h1 { font-size: 2.5rem; }
         }
     </style>
