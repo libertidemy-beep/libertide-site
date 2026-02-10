@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiberTide Studio | 科技驱动内容增长</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Inter:wght@400;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f8f7f4;     /* 官方背景色 */
             --text-main: #5b4f47;    /* 官方主字体色 */
             --accent: #FF2442;       /* 品牌红 */
             --white: #ffffff;
-            --container-max: 1200px; /* 限制内容最大宽度，防止排版过宽 */
+            --container-max: 1200px; 
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,49 +23,54 @@
             line-height: 1.6;
         }
 
-        /* 顶部导航：限制宽度并居中 */
+        /* --- 导航栏优化：让 Logo 显眼的关键 --- */
         nav {
             max-width: var(--container-max);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 20px;
+            padding: 40px 20px; /* 增加上下内边距，给 Logo 呼吸空间 */
         }
 
         .logo img {
-            height: 60px; /* 调大 Logo 尺寸 */
-            width: auto;
+            height: 100px; /* 【核心修改】将 Logo 高度从 60px 提升到 100px */
+            width: auto;   /* 保持比例 */
             display: block;
+            transition: transform 0.3s ease;
         }
 
-        /* 英雄板块：增加层次感 */
+        .logo img:hover {
+            transform: scale(1.05); /* 鼠标悬停微放大 */
+        }
+
+        /* --- 英雄板块 --- */
         .hero {
             max-width: var(--container-max);
             margin: 0 auto;
-            padding: 80px 20px;
-            text-align: left; /* 改为更有商业感的左对齐，配合图片 */
+            padding: 100px 20px;
+            text-align: left;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem); /* 响应式字体大小 */
-            line-height: 1.2;
-            margin-bottom: 25px;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 30px;
             color: var(--text-main);
             font-weight: 800;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin-bottom: 40px;
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin-bottom: 50px;
             opacity: 0.9;
         }
 
-        /* 价格方案板块：对齐 Innovative Hub 的高级感 */
+        /* --- 价格方案板块 --- */
         .pricing-section {
             background-color: var(--white);
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .pricing-container {
@@ -79,47 +84,40 @@
 
         .card {
             background: var(--bg-color);
-            padding: 50px 40px;
+            padding: 60px 45px;
             border-radius: 4px;
-            border-top: 4px solid transparent;
-            transition: 0.4s ease;
+            border-top: 5px solid transparent;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             border-top-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(91, 79, 71, 0.08);
-        }
-
-        .card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            font-weight: 700;
+            box-shadow: 0 30px 60px rgba(91, 79, 71, 0.1);
         }
 
         .price {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent);
-            margin-bottom: 30px;
+            margin: 25px 0;
         }
 
-        .price span { font-size: 1rem; color: var(--text-main); opacity: 0.6; }
+        .price span { font-size: 1.1rem; color: var(--text-main); opacity: 0.6; }
 
-        .card ul { list-style: none; margin-bottom: 40px; }
-        .card li { margin-bottom: 15px; display: flex; align-items: center; font-size: 1rem; }
-        .card li::before { content: "→"; color: var(--accent); margin-right: 12px; font-weight: bold; }
+        .card ul { list-style: none; margin-bottom: 45px; }
+        .card li { margin-bottom: 18px; display: flex; align-items: center; font-size: 1.05rem; }
+        .card li::before { content: "→"; color: var(--accent); margin-right: 15px; font-weight: bold; }
 
-        /* 统一样式按钮 */
         .btn {
             display: inline-block;
             background-color: var(--text-main);
             color: var(--bg-color);
-            padding: 18px 35px;
+            padding: 20px 40px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: 0.3s;
         }
@@ -129,18 +127,18 @@
         footer {
             max-width: var(--container-max);
             margin: 0 auto;
-            padding: 80px 20px 40px;
+            padding: 100px 20px 50px;
             text-align: center;
             border-top: 1px solid rgba(91, 79, 71, 0.1);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
-        /* 移动端优化 */
+        /* --- 移动端适配：Logo 自动缩小防止溢出 --- */
         @media (max-width: 768px) {
+            nav { padding: 30px 20px; }
+            .logo img { height: 70px; } /* 手机端适当缩小，保持美观 */
             .hero { text-align: center; padding: 60px 20px; }
-            .hero h1 { font-size: 2.2rem; }
-            .logo img { height: 45px; }
-            nav { flex-direction: column; gap: 20px; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -150,12 +148,12 @@
         <div class="logo">
             <img src="logo.png" alt="LiberTide Studio">
         </div>
-        <a href="https://wa.me/60176676597" class="btn" style="padding: 12px 25px; font-size: 0.8rem;">联系我们</a>
+        <a href="https://wa.me/60176676597" class="btn" style="padding: 15px 30px; font-size: 0.9rem;">联系我们</a>
     </nav>
 
     <section class="hero">
-        <h1>助力品牌在小红书实现<br>品效合一的确定性增长</h1>
-        <p>结合 AI 数据建模与本地化内容洞察，为中小企业提供从账号定位到精准获客的一站式代运营方案。</p>
+        <h1>助力品牌在小红书<br>实现确定性增长</h1>
+        <p>我们结合 AI 数据建模与本地化内容洞察，为中小企业提供从账号定位到精准获客的一站式代运营方案。</p>
         <a href="#pricing" class="btn">查看详细配套</a>
     </section>
 
@@ -200,7 +198,7 @@
     </div>
 
     <footer>
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 25px;">
             <p>Email: libertidmy@gmail.com | WhatsApp: +6017-6676597</p>
             <p>Location: Masai, Johor, Malaysia</p>
         </div>
