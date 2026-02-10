@@ -11,113 +11,95 @@
             --text-main: #2d2926;
             --text-sub: #6b635e;
             --accent: #FF2442;
-            --border: rgba(0, 0, 0, 0.06);
+            --border: rgba(0, 0, 0, 0.08);
             --white: #ffffff;
-            --container-w: 800px;
+            --container-w: 1000px; /* 稍微放宽以适配横向 FAQ */
         }
 
-        /* 基础重置 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            line-height: 1.8;
+            line-height: 1.7;
             font-size: 15px;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
-        /* 动画初始状态 */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 智能导航栏 */
-        nav { 
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            transition: all 0.3s; padding: 30px 0;
-        }
-        nav.scrolled { 
-            padding: 15px 0; background: rgba(253, 253, 252, 0.8); 
-            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
-        }
-        .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 90px; width: auto; transition: 0.3s; }
-        nav.scrolled .logo img { height: 60px; }
+        /* 导航栏 */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; transition: 0.3s; padding: 30px 0; }
+        nav.scrolled { padding: 15px 0; background: rgba(253, 253, 252, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+        .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 25px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 85px; width: auto; transition: 0.3s; }
+        nav.scrolled .logo img { height: 55px; }
 
-        .nav-right { display: flex; align-items: center; gap: 24px; }
-        .lang-switch { 
-            background: none; border: none; color: var(--text-sub); 
-            cursor: pointer; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+        .btn-connect { 
+            padding: 10px 28px; border: 1.5px solid var(--text-main); color: var(--text-main); 
+            text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 100px; 
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; 
         }
+        .btn-connect:hover { background: var(--text-main); color: var(--bg); }
 
-        /* 按钮动效升级 */
-        .btn-outline { 
-            display: inline-block; padding: 10px 28px; 
-            border: 1px solid var(--text-main); color: var(--text-main); 
-            text-decoration: none; font-size: 0.75rem; font-weight: 600;
-            border-radius: 100px; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
-            position: relative; overflow: hidden;
+        /* Hero */
+        .container { max-width: var(--container-w); margin: 0 auto; padding: 0 25px; }
+        .hero { padding: 180px 0 100px; }
+        .hero h1 { font-size: 3rem; line-height: 1.2; font-weight: 500; letter-spacing: -2px; margin-bottom: 25px; }
+        .hero p { font-size: 1.1rem; color: var(--text-sub); max-width: 650px; font-weight: 300; }
+
+        .section-tag { font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .section-title { font-size: 1.8rem; margin-bottom: 60px; font-weight: 500; }
+
+        /* 价格配套：修复高度对齐与按钮可见度 */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 150px; align-items: stretch; }
+        .pricing-card { 
+            padding: 60px 50px; border: 1px solid var(--border); 
+            display: flex; flex-direction: column; background: var(--white); transition: 0.4s;
         }
-        .btn-outline:hover { 
-            background: var(--text-main); color: var(--bg); 
-            transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Hero 区间 */
-        .container { max-width: var(--container-w); margin: 0 auto; padding: 0 20px; }
-        .hero { padding: 200px 0 120px; text-align: left; }
-        .hero h1 { 
-            font-size: 3rem; line-height: 1.15; font-weight: 500; 
-            letter-spacing: -2px; margin-bottom: 30px; 
-        }
-        .hero p { font-size: 1.15rem; color: var(--text-sub); font-weight: 400; max-width: 600px; }
-
-        /* 标签与标题 */
-        .section-tag { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .section-title { font-size: 1.8rem; margin-bottom: 60px; font-weight: 500; letter-spacing: -0.5px; }
-
-        /* 优势板块：Hover 放大效果 */
-        .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-bottom: 150px; border-top: 1px solid #ddd; padding-top: 50px; }
-        .edge-item h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600; }
-        .edge-item p { font-size: 0.9rem; color: var(--text-sub); transition: 0.3s; }
-        .edge-item:hover p { color: var(--text-main); }
-
-        /* 服务卡片：增加深度感 */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-bottom: 150px; }
-        .service-tile { padding: 45px; border: 1px solid var(--border); background: var(--white); transition: 0.5s; cursor: default; }
-        .service-tile:hover { 
-            border-color: transparent; box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            transform: translateY(-5px);
-        }
-        .service-tile h3 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; }
-        .service-tile p { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 30px; }
-
-        /* 价格板块：主次分明 */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 150px; }
-        .pricing-card { padding: 70px 50px; border: 1px solid var(--border); transition: 0.5s; }
-        .pricing-card.featured { background: var(--text-main); color: var(--bg); border: none; transform: scale(1.03); }
-        .price { font-size: 2.4rem; font-weight: 500; margin: 30px 0; letter-spacing: -1px; }
+        .pricing-card.featured { background: #262321; color: var(--white); border: none; transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
-        ul { list-style: none; margin-bottom: 50px; }
-        li { padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--text-sub); }
-        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+        .price { font-size: 2.4rem; font-weight: 500; margin: 30px 0; letter-spacing: -1px; }
+        .pricing-card.featured .price { color: #fff; }
 
-        /* FAQ */
-        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; border-top: 1px solid var(--border); padding-top: 80px; margin-bottom: 120px; }
-        .faq-item h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600; }
-        .faq-item p { font-size: 0.95rem; color: var(--text-sub); }
+        ul { list-style: none; margin-bottom: 40px; flex-grow: 1; } /* 关键：自动撑开空间 */
+        li { padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--text-sub); font-weight: 300; }
+        .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
 
-        footer { text-align: center; padding: 120px 20px; color: var(--text-sub); opacity: 0.5; font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid var(--border); }
+        /* 按钮修复 */
+        .btn-plan { 
+            display: block; width: 100%; padding: 16px; text-align: center;
+            text-decoration: none; font-size: 0.8rem; font-weight: 700; border-radius: 4px;
+            transition: 0.3s; letter-spacing: 1px;
+        }
+        .pricing-card .btn-plan { border: 1.5px solid var(--text-main); color: var(--text-main); }
+        .pricing-card .btn-plan:hover { background: var(--text-main); color: #fff; }
 
-        [lang="en"] { display: none; }
-        @media (max-width: 768px) {
-            .edge-grid, .pricing-grid, .faq-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: 2.2rem; }
+        /* 2499 按钮特别优化：实心白色，高对比度 */
+        .pricing-card.featured .btn-plan { background: #fff; color: #000; border: none; }
+        .pricing-card.featured .btn-plan:hover { background: var(--accent); color: #fff; }
+
+        /* 横向 FAQ 布局 */
+        .faq-horizontal { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+            margin-bottom: 120px; 
+            border-top: 1px solid var(--border);
+            padding-top: 60px;
+        }
+        .faq-item-h { position: relative; }
+        .faq-num { font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 15px; display: block; opacity: 0.6; }
+        .faq-item-h h4 { font-size: 1.05rem; margin-bottom: 15px; font-weight: 600; line-height: 1.4; }
+        .faq-item-h p { font-size: 0.9rem; color: var(--text-sub); font-weight: 300; line-height: 1.6; }
+
+        footer { text-align: center; padding: 100px 20px; color: var(--text-sub); font-size: 0.75rem; opacity: 0.6; border-top: 1px solid var(--border); }
+
+        @media (max-width: 900px) {
+            .pricing-grid, .faq-horizontal { grid-template-columns: 1fr; }
             .pricing-card.featured { transform: scale(1); }
-            .hero { padding: 150px 0 80px; }
         }
     </style>
 </head>
@@ -127,90 +109,63 @@
         <div class="nav-container">
             <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
             <div class="nav-right">
-                <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
-                <a href="https://wa.me/60176676597" class="btn-outline">Connect</a>
+                <a href="https://wa.me/60176676597" class="btn-connect">Connect</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <section class="hero reveal">
-            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度" data-en="Native Insights.<br>Growth, Redefined.">
-                深度洞察本土市场<br>定义内容增长新高度
-            </h1>
-            <p data-zh="LiberTide Studio 结合精细内容策略与真实数据回测，协助品牌在马新小红书生态中构建长效增长资产。" 
-               data-en="We combine refined strategy with real-world data to build long-term brand equity on Xiaohongshu.">
-               LiberTide Studio 结合精细内容策略与真实数据回测，协助品牌在马新小红书生态中构建长效增长资产。
-            </p>
+            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度">深度洞察本土市场<br>定义内容增长新高度</h1>
+            <p>LiberTide Studio 结合精细内容策略与真实数据回测，协助品牌在马新小红书生态中构建具“确定性”的增长资产。</p>
         </section>
 
-        <div class="edge-grid reveal">
-            <div class="edge-item">
-                <h4 data-zh="本土视角" data-en="Native Logic">本土视角</h4>
-                <p data-zh="拒绝生搬硬套，用马新用户听得懂、愿意看的方式讲品牌故事。" data-en="Avoid generic content; speak the language that resonates with local users.">拒绝生搬硬套，用马新用户听得懂、愿意看的方式讲品牌故事。</p>
-            </div>
-            <div class="edge-item">
-                <h4 data-zh="全案交付" data-en="End-to-End">全案交付</h4>
-                <p data-zh="从开户认证到广告投流，我们处理所有繁琐细节，您只需关注增长。" data-en="From verification to ads; we handle the details, you focus on growth.">从开户认证到广告投流，我们处理所有繁琐细节，您只需关注增长。</p>
-            </div>
-            <div class="edge-item">
-                <h4 data-zh="确定性增长" data-en="Certainty">确定性增长</h4>
-                <p data-zh="依托深度市场回测，将不确定的流量转化为确定的商业获客。" data-en="Transforming unpredictable traffic into predictable business leads.">依托深度市场回测，将不确定的流量转化为确定的商业获客。</p>
-            </div>
-        </div>
-
-        <span class="section-tag reveal">Expertise</span>
-        <h2 class="section-title reveal" data-zh="专项营销服务" data-en="Our Services">专项营销服务</h2>
-        <div class="services-grid reveal">
-            <div class="service-tile">
-                <h3 data-zh="专业号认证" data-en="Verification">专业号认证</h3>
-                <p data-zh="官方蓝V背书，解锁完整商业组件与营销工具。" data-en="Get official Blue V status and unlock professional tools.">官方蓝V背书，解锁完整商业组件与营销工具。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="立即咨询" data-en="Consult">立即咨询</a>
-            </div>
-            <div class="service-tile">
-                <h3 data-zh="聚光广告投放" data-en="Spotlight Ads">聚光广告投放</h3>
-                <p data-zh="基于受众画像的精准投流，优化获客成本与转化率。" data-en="Targeted ad spend optimized for lower CAC and higher ROI.">基于受众画像的精准投流，优化获客成本与转化率。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="获取方案" data-en="Strategy">获取方案</a>
-            </div>
-            <div class="service-tile">
-                <h3 data-zh="博主种草矩阵" data-en="KOL Matrix">博主种草矩阵</h3>
-                <p data-zh="联动本土KOL/KOC，通过共创引发社交裂变与口碑。" data-en="Connect with local influencers to build organic social trust.">联动本土KOL/KOC，通过共创引发社交裂变与口碑。</p>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="开始招募" data-en="Recruit">开始招募</a>
-            </div>
-        </div>
-
         <span class="section-tag reveal">Investment</span>
-        <h2 class="section-title reveal" data-zh="内容代运营配套" data-en="Growth Plans">内容代运营配套</h2>
+        <h2 class="section-title reveal">内容代运营配套</h2>
         <div class="pricing-grid reveal">
             <div class="pricing-card">
-                <h3 data-zh="月度内容配套" data-en="Essential">月度内容配套</h3>
+                <h3 data-zh="月度内容配套">月度内容配套</h3>
                 <div class="price">RM 1,499</div>
-                <ul data-zh="<li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期</li><li>月度运营数据多维复盘</li>"
-                    data-en="<li>4 Original High-quality Posts</li><li>Visual Tone Positioning</li><li>Image & Video Retouching</li><li>Data Performance Analysis</li>">
-                    <li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期</li><li>月度运营数据多维复盘</li>
+                <ul>
+                    <li>4 篇原创爆款笔记执行</li>
+                    <li>品牌内容调性视觉定位</li>
+                    <li>笔记美工设计与后期</li>
+                    <li>月度运营数据多维复盘</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="咨询合作" data-en="Start Now">咨询合作</a>
+                <a href="https://wa.me/60176676597" class="btn-plan">咨询合作</a>
             </div>
+
             <div class="pricing-card featured">
-                <h3 data-zh="深度代运营配套" data-en="Growth Pro">深度代运营配套</h3>
+                <h3 data-zh="深度代运营配套">深度代运营配套</h3>
                 <div class="price">RM 2,499</div>
-                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与转化沉淀</li><li>SEO 搜索词优化布局</li>"
-                    data-en="<li>8 Premium Weekly Postings</li><li>Full Visual Strategy Setup</li><li>Lead Generation & Engagement</li><li>SEO Keyword Optimization</li>">
-                    <li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与转化沉淀</li><li>SEO 搜索词优化布局</li>
+                <ul>
+                    <li>8 篇高质量笔记推送</li>
+                    <li>全案视觉体系深度搭建</li>
+                    <li>评论区互动与转化沉淀</li>
+                    <li>SEO 搜索词优化布局</li>
+                    <li>专属聚光投放策略建议</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn-outline" data-zh="立即预约" data-en="Book Now">立即预约</a>
+                <a href="https://wa.me/60176676597" class="btn-plan">立即预约</a>
             </div>
         </div>
 
-        <h2 class="section-title reveal" data-zh="常见问题" data-en="FAQ">常见问题</h2>
-        <div class="faq-grid reveal">
-            <div class="faq-item">
-                <h4 data-zh="代运营包含博主费用吗？" data-en="Influencer Fees?">代运营包含博主费用吗？</h4>
-                <p data-zh="配套费为我们的专业服务费。博主稿费或样品费用需由品牌方承担，我们负责筛选与对接。" data-en="No. Influencer or sample costs are separate; we manage the recruitment and vetting process.">配套费为我们的专业服务费。博主稿费或样品费用需由品牌方承担，我们负责筛选与对接。</p>
+        <span class="section-tag reveal">Common Questions</span>
+        <h2 class="section-title reveal">常见问题回答</h2>
+        <div class="faq-horizontal reveal">
+            <div class="faq-item-h">
+                <span class="faq-num">Q1.</span>
+                <h4>代运营配套是否包含广告投放费？</h4>
+                <p>不包含。配套费为我们的专业服务费。广告费由客户直接充值至后台，我们负责消耗策略与转化优化。</p>
             </div>
-            <div class="faq-item">
-                <h4 data-zh="如何保证内容质量？" data-en="Quality Control?">如何保证内容质量？</h4>
-                <p data-zh="所有内容均由本土团队撰写并经过两轮内部审核，确保符合马新受众审美与品牌调性。" data-en="Content is crafted by local experts and double-checked for cultural and brand alignment.">所有内容均由本土团队撰写并经过两轮内部审核，确保符合马新受众审美与品牌调性。</p>
+            <div class="faq-item-h">
+                <span class="faq-num">Q2.</span>
+                <h4>通常多久能看到明显的增长？</h4>
+                <p>首月为品牌建设期。通常在第2-3个月，随着内容权重增加与SEO生效，会进入明显的流量爆发与转化期。</p>
+            </div>
+            <div class="faq-item-h">
+                <span class="faq-num">Q3.</span>
+                <h4>内容是由 AI 还是人工撰写？</h4>
+                <p>我们坚持本土人工操盘。AI 仅用于辅助数据建模，所有文案均由马新本土团队撰写，确保语言接地气。</p>
             </div>
         </div>
     </div>
@@ -220,36 +175,19 @@
     </footer>
 
     <script>
-        // 语言切换
-        let currentLang = 'zh';
-        function toggleLang() {
-            currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            document.querySelectorAll('[data-zh]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (el.tagName === 'UL') { el.innerHTML = text; } 
-                else if (el.tagName === 'H1') { el.innerHTML = text; }
-                else { el.innerText = text; }
-            });
-            document.querySelector('.lang-switch').innerText = currentLang === 'zh' ? 'EN / 中文' : '中文 / EN';
-        }
-
-        // 导航栏滚动效果
+        // 导航滚动效果
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
 
-        // 滚动进入动画
-        const observerOptions = { threshold: 0.15 };
+        // 滚动揭幕动画
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
-
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
