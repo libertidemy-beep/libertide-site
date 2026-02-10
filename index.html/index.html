@@ -1,88 +1,54 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiberTide Studio | 科技驱动内容增长</title>
+    <title>LiberTide Studio</title>
     <style>
-        /* 核心专业样式 */
-        :root {
-            --primary: #FF2442; /* 小红书红 */
-            --dark: #0F172A;    /* 深空黑 */
-            --glass: rgba(255, 255, 255, 0.05);
-        }
+        body { background-color: #0f172a; color: white; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
+        .container { padding: 50px 20px; }
+        h1 { color: #FF2442; font-size: 2.5rem; margin-top: 50px; }
+        p { color: #94a3b8; font-size: 1.1rem; }
+        .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 10px; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid #334155; border-radius: 15px; padding: 30px; width: 280px; }
+        .card h3 { color: white; }
+        .price { font-size: 1.8rem; font-weight: bold; margin: 15px 0; color: #FF2442; }
+        .btn { display: inline-block; background: #FF2442; color: white; padding: 10px 25px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+        ul { text-align: left; font-size: 0.9rem; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LIBERTIDE STUDIO</h1>
+        <p>全马领先的 AI 驱动内容增长方案</p>
+        
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>月度内容</h3>
+                <div class="price">RM 1,499</div>
+                <ul>
+                    <li>4 篇深度笔记</li>
+                    <li>内容定位策划</li>
+                    <li>图片/视频制作</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn">咨询方案</a>
+            </div>
 
-        body {
-            margin: 0;
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--dark);
-            color: white;
-            line-height: 1.6;
-        }
+            <div class="card" style="border-color: #FF2442;">
+                <h3>基础代运营</h3>
+                <div class="price">RM 2,499</div>
+                <ul>
+                    <li>8 篇高质量笔记</li>
+                    <li>账号搭建与认证</li>
+                    <li>精准投放建议</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn">开启增长</a>
+            </div>
+        </div>
 
-        /* 导航栏 */
-        nav {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; }
-        .logo span { color: var(--primary); }
-
-        /* 英雄板块 */
-        .hero {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            padding: 0 20px;
-        }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; }
-
-        /* 价格卡片布局 */
-        .pricing-container {
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 40px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(255, 36, 66, 0.1);
-        }
-
-        .card.featured {
-            background: linear-gradient(145deg, rgba(255,36,66,0.1) 0%, rgba(15,23,42,1) 100%);
-            border: 1px solid var(--primary);
-        }
-
-        .price { font-size: 2.5rem; font-weight: bold; margin: 20px 0; }
-        .price span { font-size: 1rem; color: #94a3b8; }
-
-        ul { list-style: none; padding:
+        <footer style="margin-top: 50px; color: #475569; font-size: 0.8rem;">
+            © 2026 LIBERTIDE STUDIO. WhatsApp: +6017-6676597
+        </footer>
+    </div>
+</body>
+</html>
