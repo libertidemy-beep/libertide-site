@@ -13,7 +13,7 @@
             --accent: #FF2442;
             --border: rgba(0, 0, 0, 0.1);
             --white: #ffffff;
-            --container-w: 1200px; /* 扩宽容器，不再显得局促 */
+            --container-w: 1200px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,61 +23,64 @@
             color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
             line-height: 1.6;
-            font-size: 17px; /* 基础字号放大 */
+            font-size: 17px;
             -webkit-font-smoothing: antialiased;
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 导航栏高度优化 */
+        /* 导航栏 */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; transition: 0.4s; padding: 40px 0; }
         nav.scrolled { padding: 20px 0; background: rgba(253, 253, 252, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
         .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 100px; width: auto; transition: 0.4s; }
         nav.scrolled .logo img { height: 60px; }
 
-        .btn-connect { 
-            padding: 14px 36px; border: 2px solid var(--text-main); color: var(--text-main); 
-            text-decoration: none; font-size: 0.85rem; font-weight: 700; border-radius: 100px; 
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; 
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .lang-switch { 
+            background: none; border: none; color: var(--text-sub); 
+            cursor: pointer; font-size: 0.8rem; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s;
         }
-        .btn-connect:hover { background: var(--text-main); color: var(--bg); transform: scale(1.05); }
+        .lang-switch:hover { color: var(--accent); }
 
-        /* Hero：大气场排版 */
+        .btn-connect { 
+            padding: 12px 30px; border: 2px solid var(--text-main); color: var(--text-main); 
+            text-decoration: none; font-size: 0.85rem; font-weight: 700; border-radius: 100px; 
+            text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; 
+        }
+        .btn-connect:hover { background: var(--text-main); color: var(--bg); }
+
+        /* Hero */
         .container { max-width: var(--container-w); margin: 0 auto; padding: 0 40px; }
         .hero { padding: 260px 0 120px; }
         .hero h1 { 
-            font-size: 4.5rem; /* 标题大幅放大 */
-            line-height: 1.1; font-weight: 600; letter-spacing: -3px; margin-bottom: 35px; 
+            font-size: 4.5rem; line-height: 1.1; font-weight: 600; letter-spacing: -3px; margin-bottom: 35px; 
             background: linear-gradient(90deg, #1a1a1a, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero p { font-size: 1.3rem; color: var(--text-sub); max-width: 800px; font-weight: 400; line-height: 1.8; }
+        .hero p { font-size: 1.3rem; color: var(--text-sub); max-width: 800px; font-weight: 400; }
 
         .section-tag { font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        .section-title { font-size: 2.5rem; margin-bottom: 80px; font-weight: 600; letter-spacing: -1px; }
+        .section-title { font-size: 2.5rem; margin-bottom: 80px; font-weight: 600; }
 
         /* 核心优势 */
         .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-bottom: 160px; border-top: 2px solid var(--text-main); padding-top: 60px; }
         .edge-item h4 { font-size: 1.4rem; margin-bottom: 20px; font-weight: 700; }
         .edge-item p { font-size: 1.05rem; color: var(--text-sub); }
 
-        /* 合作流程：数字化背景装饰 */
+        /* 合作流程 */
         .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 180px; }
         .step { position: relative; padding: 40px 30px; background: #fff; border: 1px solid var(--border); transition: 0.4s; }
         .step:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .step-num { font-size: 3rem; font-weight: 800; color: rgba(255, 36, 66, 0.1); position: absolute; top: 10px; right: 20px; }
-        .step h4 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 700; position: relative; }
-        .step p { font-size: 0.95rem; color: var(--text-sub); position: relative; }
+        .step h4 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 700; }
 
-        /* 价格配套：视觉冲击力 */
+        /* 价格配套 */
         .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 180px; align-items: stretch; }
         .pricing-card { padding: 80px 60px; border: 1px solid var(--border); display: flex; flex-direction: column; background: var(--white); transition: 0.5s; }
         .pricing-card.featured { background: #1a1a1a; color: var(--white); border: none; transform: scale(1.05); box-shadow: 0 40px 80px rgba(0,0,0,0.2); }
-        
         .price { font-size: 3.5rem; font-weight: 700; margin: 40px 0; letter-spacing: -2px; }
-        .pricing-card.featured .price { color: #fff; }
-
         ul { list-style: none; margin-bottom: 60px; flex-grow: 1; }
         li { padding: 18px 0; font-size: 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--text-sub); }
         .pricing-card.featured li { border-bottom-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
@@ -89,28 +92,26 @@
         }
         .pricing-card .btn-plan { border: 2px solid var(--text-main); color: var(--text-main); }
         .pricing-card .btn-plan:hover { background: var(--text-main); color: #fff; }
+        .pricing-card.featured .btn-plan { background: var(--accent); color: #fff; border: none; }
 
-        .pricing-card.featured .btn-plan { background: var(--accent); color: #fff; border: none; box-shadow: 0 10px 20px rgba(255, 36, 66, 0.3); }
-        .pricing-card.featured .btn-plan:hover { transform: scale(1.03); filter: brightness(1.1); }
-
-        /* FAQ：横向大气排版 */
+        /* FAQ */
         .faq-horizontal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-bottom: 160px; border-top: 2px solid var(--border); padding-top: 80px; }
         .faq-item-h h4 { font-size: 1.3rem; margin-bottom: 20px; font-weight: 700; }
-        .faq-item-h p { font-size: 1.05rem; color: var(--text-sub); line-height: 1.8; }
         .faq-num { font-size: 0.9rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; display: block; }
 
-        footer { text-align: center; padding: 120px 40px; color: var(--text-sub); font-size: 0.9rem; border-top: 1px solid var(--border); letter-spacing: 1px; }
+        footer { text-align: center; padding: 120px 40px; color: var(--text-sub); font-size: 0.9rem; border-top: 1px solid var(--border); }
 
         @media (max-width: 1100px) {
             .hero h1 { font-size: 3.5rem; }
             .process-grid { grid-template-columns: repeat(2, 1fr); }
-            .faq-horizontal { grid-template-columns: 1fr; gap: 40px; }
+            .faq-horizontal { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .pricing-grid { grid-template-columns: 1fr; }
             .pricing-card.featured { transform: scale(1); }
             .edge-grid { grid-template-columns: 1fr; }
+            .nav-right { gap: 15px; }
         }
     </style>
 </head>
@@ -120,6 +121,7 @@
         <div class="nav-container">
             <div class="logo"><img src="logo.png" alt="LiberTide Studio"></div>
             <div class="nav-right">
+                <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
                 <a href="https://wa.me/60176676597" class="btn-connect">Connect</a>
             </div>
         </div>
@@ -127,96 +129,94 @@
 
     <div class="container">
         <section class="hero reveal">
-            <h1>深度洞察本土市场<br>定义内容增长新高度</h1>
-            <p>LiberTide Studio 专注通过精细的内容策略与数据回测，协助品牌在马新小红书市场构建具“确定性”的长期增长资产。</p>
+            <h1 data-zh="深度洞察本土市场<br>定义内容增长新高度" data-en="Native Insight.<br>Growth, Redefined.">深度洞察本土市场<br>定义内容增长新高度</h1>
+            <p data-zh="LiberTide Studio 专注通过精细的内容策略与数据回测，协助品牌在马新小红书市场构建具“确定性”的长期增长资产。" 
+               data-en="We specialize in refined content strategies and data backtesting to help brands build deterministic growth assets on Xiaohongshu.">
+               LiberTide Studio 专注通过精细的内容策略与数据回测，协助品牌在马新小红书市场构建具“确定性”的长期增长资产。
+            </p>
         </section>
 
         <div class="edge-grid reveal">
             <div class="edge-item">
-                <h4>本土化洞察</h4>
-                <p>深耕马新市场，理解本地用户的语言习惯与文化语境，拒绝无效内容落地。</p>
+                <h4 data-zh="本土化洞察" data-en="Native Edge">本土化洞察</h4>
+                <p data-zh="深耕马新市场，理解本地用户的语言习惯与文化语境，拒绝无效内容落地。" data-en="Deep roots in MY/SG markets, understanding local nuances to avoid generic content.">深耕马新市场，理解本地用户的语言习惯与文化语境，拒绝无效内容落地。</p>
             </div>
             <div class="edge-item">
-                <h4>全案交付</h4>
-                <p>从账号诊断、内容创作到投流闭环，提供一站式专业代运营支持，让您专注核心业务。</p>
+                <h4 data-zh="全案交付" data-en="Full Cycle">全案交付</h4>
+                <p data-zh="从账号诊断、内容创作到投流闭环，提供一站式专业代运营支持。" data-en="From audit to commercial ad loops, providing one-stop professional operation support.">从账号诊断、内容创作到投流闭环，提供一站式专业代运营支持。</p>
             </div>
             <div class="edge-item">
-                <h4>结果导向</h4>
-                <p>所有策略旨在提升品牌真实转化与心智占领，而非追求虚假的曝光数据。</p>
+                <h4 data-zh="结果导向" data-en="Result Driven">结果导向</h4>
+                <p data-zh="所有策略旨在提升品牌真实转化与心智占领，而非追求虚假的曝光数据。" data-en="Strategies built for real conversions and brand equity, not vanity metrics.">所有策略旨在提升品牌真实转化与心智占领，而非追求虚假的曝光数据。</p>
             </div>
         </div>
 
         <span class="section-tag reveal">Methodology</span>
-        <h2 class="section-title reveal">标准化合作流程</h2>
+        <h2 class="section-title reveal" data-zh="标准化合作流程" data-en="Our Process">标准化合作流程</h2>
         <div class="process-grid reveal">
             <div class="step">
                 <span class="step-num">01</span>
-                <h4>深度诊断</h4>
-                <p>剖析行业竞争格局与账号现状，精准定位增长突破口。</p>
+                <h4 data-zh="深度诊断" data-en="Audit">深度诊断</h4>
+                <p data-zh="剖析行业竞争格局与账号现状，精准定位增长突破口。" data-en="Analyze competitive landscape and account status to find growth hooks.">剖析行业竞争格局与账号现状，精准定位增长突破口。</p>
             </div>
             <div class="step">
                 <span class="step-num">02</span>
-                <h4>方案共创</h4>
-                <p>定制差异化内容调性，规划阶段性投流与种草策略。</p>
+                <h4 data-zh="方案共创" data-en="Strategy">方案共创</h4>
+                <p data-zh="定制差异化内容调性，规划阶段性投流与种草策略。" data-en="Define unique brand tone and plan tactical ad/influencer strategies.">定制差异化内容调性，规划阶段性投流与种草策略。</p>
             </div>
             <div class="step">
                 <span class="step-num">03</span>
-                <h4>内容爆发</h4>
-                <p>本土团队高效操盘，持续输出引发用户情感共鸣的高质笔记。</p>
+                <h4 data-zh="内容爆发" data-en="Execution">内容爆发</h4>
+                <p data-zh="本土团队高效操盘，持续输出引发用户情感共鸣的高质笔记。" data-en="Native team execution, delivering high-quality content that resonates.">本土团队高效操盘，持续输出引发用户情感共鸣的高质笔记。</p>
             </div>
             <div class="step">
                 <span class="step-num">04</span>
-                <h4>精准复盘</h4>
-                <p>实时追踪转化数据，动态调整运营策略，确保增长资产持续增值。</p>
+                <h4 data-zh="精准复盘" data-en="Reporting">精准复盘</h4>
+                <p data-zh="实时追踪转化数据，动态调整运营策略，确保资产增值。" data-en="Track conversion data and adjust tactics to ensure asset growth.">实时追踪转化数据，动态调整运营策略，确保资产增值。</p>
             </div>
         </div>
 
         <span class="section-tag reveal">Operation Packages</span>
-        <h2 class="section-title reveal">代运营服务配套</h2>
+        <h2 class="section-title reveal" data-zh="代运营服务配套" data-en="Service Plans">代运营服务配套</h2>
         <div class="pricing-grid reveal">
             <div class="pricing-card">
-                <h3>月度内容配套</h3>
+                <h3 data-zh="月度内容配套" data-en="Starter Plan">月度内容配套</h3>
                 <div class="price">RM 1,499</div>
-                <ul>
-                    <li>4 篇原创爆款笔记执行</li>
-                    <li>品牌内容调性视觉定位</li>
-                    <li>笔记美工设计与后期处理</li>
-                    <li>月度运营数据多维深度复盘</li>
+                <ul data-zh="<li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期处理</li><li>月度运营数据多维深度复盘</li>"
+                    data-en="<li>4 Original Creative Posts</li><li>Visual Tone Positioning</li><li>Design & Post-production</li><li>Monthly Performance Audit</li>">
+                    <li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>笔记美工设计与后期处理</li><li>月度运营数据多维深度复盘</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn-plan">咨询合作方案</a>
+                <a href="https://wa.me/60176676597" class="btn-plan" data-zh="咨询合作方案" data-en="Consult Now">咨询合作方案</a>
             </div>
 
             <div class="pricing-card featured">
-                <h3>深度代运营配套</h3>
+                <h3 data-zh="深度代运营配套" data-en="Growth Plan">深度代运营配套</h3>
                 <div class="price">RM 2,499</div>
-                <ul>
-                    <li>8 篇高质量笔记推送</li>
-                    <li>全案视觉体系深度搭建</li>
-                    <li>评论区互动与高意向转化沉淀</li>
-                    <li>SEO 核心搜索词优化布局</li>
-                    <li>专属聚光投放策略与投放执行</li>
+                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与高意向转化沉淀</li><li>SEO 核心搜索词优化布局</li><li>专属聚光投放策略与投放执行</li>"
+                    data-en="<li>8 High-quality Posts</li><li>Full Visual Identity Setup</li><li>Lead Gen & Engagement</li><li>SEO Keyword Optimization</li><li>Ad Management & Execution</li>">
+                    <li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>评论区互动与高意向转化沉淀</li><li>SEO 核心搜索词优化布局</li><li>专属聚光投放策略与投放执行</li>
                 </ul>
-                <a href="https://wa.me/60176676597" class="btn-plan">立即预约增长</a>
+                <a href="https://wa.me/60176676597" class="btn-plan" data-zh="立即预约增长" data-en="Start Growth">立即预约增长</a>
             </div>
         </div>
 
-        <span class="section-tag reveal">Insights</span>
-        <h2 class="section-title reveal">常见问题回答</h2>
+        <span class="section-tag reveal">FAQ</span>
+        <h2 class="section-title reveal" data-zh="常见问题回答" data-en="FAQ">常见问题回答</h2>
         <div class="faq-horizontal reveal">
             <div class="faq-item-h">
                 <span class="faq-num">Q1.</span>
-                <h4>代运营配套是否包含广告投放费？</h4>
-                <p>不包含。配套费为我们的专业服务与执行费。广告投放金额由客户充值，我们负责制定消耗策略与转化路径优化。</p>
+                <h4 data-zh="代运营配套是否包含广告费？" data-en="Does it include Ad Spend?">代运营配套是否包含广告费？</h4>
+                <p data-zh="不包含。配套费为我们的专业服务费。广告投放金额由客户充值。" data-en="No. Fees are for service only. Ad budgets are managed/topped up by the client.">不包含。配套费为我们的专业服务费。广告投放金额由客户充值。</p>
             </div>
             <div class="faq-item-h">
                 <span class="faq-num">Q2.</span>
-                <h4>通常多久能看到明显的增长？</h4>
-                <p>首月为品牌资产搭建期。通常在第 2-3 个月，随着账号权重提升与 SEO 效果显现，会进入流量爆发与咨询转化期。</p>
+                <h4 data-zh="通常多久能看到明显增长？" data-en="When to see results?">通常多久能看到明显增长？</h4>
+                <p data-zh="首月为品牌资产搭建期。通常在第 2-3 个月进入流量爆发期。" data-en="Month 1 is for setup. Real growth typically accelerates in Months 2-3.">首月为品牌资产搭建期。通常在第 2-3 个月进入流量爆发期。</p>
             </div>
             <div class="faq-item-h">
                 <span class="faq-num">Q3.</span>
-                <h4>你们如何筛选合作的博主资源？</h4>
-                <p>我们拥有自建的马新本土博主画像库，通过历史转化数据回测进行严选，确保博主粉丝受众与您的品牌受众高度重合。</p>
+                <h4 data-zh="你们如何筛选博主资源？" data-en="Influencer Selection?">你们如何筛选博主资源？</h4>
+                <p data-zh="我们拥有本土博主画像库，通过历史转化数据回测进行严选。" data-en="We use our native database and past conversion data to vet creators.">我们拥有本土博主画像库，通过历史转化数据回测进行严选。</p>
             </div>
         </div>
     </div>
@@ -226,6 +226,17 @@
     </footer>
 
     <script>
+        let currentLang = 'zh';
+        function toggleLang() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (el.tagName === 'UL' || el.tagName === 'H1') { el.innerHTML = text; } 
+                else { el.innerText = text; }
+            });
+            document.querySelector('.lang-switch').innerText = currentLang === 'zh' ? 'EN / 中文' : '中文 / EN';
+        }
+
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
