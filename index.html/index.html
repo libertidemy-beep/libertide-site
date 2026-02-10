@@ -3,217 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiberTide Studio | 马来西亚专业小红书代运营</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>LiberTide Studio | 科技驱动内容增长</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* 官方配色定义 */
         :root {
             --bg-color: #f8f7f4;     /* 官方背景色 */
             --text-main: #5b4f47;    /* 官方主字体色 */
-            --accent: #FF2442;       /* 品牌点缀红 (小红书) */
+            --accent: #FF2442;       /* 品牌红 */
             --white: #ffffff;
+            --container-max: 1200px; /* 限制内容最大宽度，防止排版过宽 */
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Noto Sans SC', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
         }
 
-        /* 顶部导航 */
+        /* 顶部导航：限制宽度并居中 */
         nav {
+            max-width: var(--container-max);
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 8%;
-            background: var(--bg-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-<div class="logo">
-    <img src="logo.svg" alt="LiberTide Studio" style="height: 40px; width: auto; display: block;">
-</div>
+            padding: 30px 20px;
         }
 
-        /* 核心展示区 (Hero Section) */
-        .hero {
-            padding: 100px 8% 60px;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
-
-        /* 服务板块 (类似 Innovative Hub) */
-        .services {
-            padding: 60px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 2px; /* 方正感更显商务专业 */
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-bottom: 3px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(91, 79, 71, 0.05);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .price-tag {
-            font-size: 1.8rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 20px;
+        .logo img {
+            height: 60px; /* 调大 Logo 尺寸 */
+            width: auto;
             display: block;
         }
 
-        .service-card ul {
-            list-style: none;
+        /* 英雄板块：增加层次感 */
+        .hero {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: left; /* 改为更有商业感的左对齐，配合图片 */
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* 响应式字体大小 */
+            line-height: 1.2;
             margin-bottom: 25px;
+            color: var(--text-main);
+            font-weight: 800;
         }
 
-        .service-card ul li {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            opacity: 0.9;
         }
 
-        .service-card ul li::before {
-            content: "→";
-            margin-right: 10px;
+        /* 价格方案板块：对齐 Innovative Hub 的高级感 */
+        .pricing-section {
+            background-color: var(--white);
+            padding: 100px 0;
+        }
+
+        .pricing-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--bg-color);
+            padding: 50px 40px;
+            border-radius: 4px;
+            border-top: 4px solid transparent;
+            transition: 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(91, 79, 71, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
             color: var(--accent);
+            margin-bottom: 30px;
         }
 
-        /* 呼吁行动按钮 */
-        .cta-button {
+        .price span { font-size: 1rem; color: var(--text-main); opacity: 0.6; }
+
+        .card ul { list-style: none; margin-bottom: 40px; }
+        .card li { margin-bottom: 15px; display: flex; align-items: center; font-size: 1rem; }
+        .card li::before { content: "→"; color: var(--accent); margin-right: 12px; font-weight: bold; }
+
+        /* 统一样式按钮 */
+        .btn {
             display: inline-block;
-            padding: 15px 35px;
             background-color: var(--text-main);
             color: var(--bg-color);
+            padding: 18px 35px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
-            transition: 0.3s;
-            text-transform: uppercase;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .cta-button:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
+        .btn:hover { background-color: var(--accent); color: var(--white); }
 
-        /* 页脚 */
         footer {
-            padding: 80px 8% 40px;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 80px 20px 40px;
             text-align: center;
-            background-color: #eeebe6; /* 比背景稍深一点的颜色 */
-            margin-top: 60px;
-        }
-
-        .footer-info {
-            margin-bottom: 20px;
+            border-top: 1px solid rgba(91, 79, 71, 0.1);
             font-size: 0.9rem;
         }
 
+        /* 移动端优化 */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .services { grid-template-columns: 1fr; }
+            .hero { text-align: center; padding: 60px 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            .logo img { height: 45px; }
+            nav { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
-    
-<div class="logo">
-    <img src="logo.svg" alt="LiberTide Studio" style="height: 40px; width: auto; display: block;">
-</div>
+
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="LiberTide Studio">
+        </div>
+        <a href="https://wa.me/60176676597" class="btn" style="padding: 12px 25px; font-size: 0.8rem;">联系我们</a>
+    </nav>
 
     <section class="hero">
-        <h1>助力品牌在小红书<br>实现品效合一的确定性增长</h1>
-        <p>我们结合 AI 数据建模与马新本地化内容洞察，为中小企业提供一站式社交媒体代运营方案。</p>
-        <a href="#pricing" class="cta-button">查看服务方案</a>
+        <h1>助力品牌在小红书实现<br>品效合一的确定性增长</h1>
+        <p>结合 AI 数据建模与本地化内容洞察，为中小企业提供从账号定位到精准获客的一站式代运营方案。</p>
+        <a href="#pricing" class="btn">查看详细配套</a>
     </section>
 
-    <section class="services" id="pricing">
-        <div class="service-card">
-            <h3>月度内容配套</h3>
-            <span class="price-tag">RM 1,499 <span>/月</span></span>
-            <ul>
-                <li>4 篇深度爆款笔记撰写</li>
-                <li>品牌账号视觉调性定位</li>
-                <li>精美笔记图片/短视频设计</li>
-                <li>每月数据基础复盘</li>
-            </ul>
-            <a href="https://wa.me/60176676597" class="cta-button">立即选购</a>
-        </div>
+    <div class="pricing-section" id="pricing">
+        <div class="pricing-container">
+            <div class="card">
+                <h3>月度内容配套</h3>
+                <div class="price">RM 1,499 <span>/月</span></div>
+                <ul>
+                    <li>4 篇深度爆款笔记撰写</li>
+                    <li>品牌视觉调性定位</li>
+                    <li>图片/短视频精修设计</li>
+                    <li>每月数据基础复盘</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn">立即选购</a>
+            </div>
 
-        <div class="service-card">
-            <h3>基础代运营配套</h3>
-            <span class="price-tag">RM 2,499 <span>/月</span></span>
-            <ul>
-                <li>8 篇高质量笔记推送</li>
-                <li>专业号搭建与官方认证</li>
-                <li>评论区舆情监控与互动</li>
-                <li>KFS 投流策略方案建议</li>
-            </ul>
-            <a href="https://wa.me/60176676597" class="cta-button">最受推荐</a>
-        </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <h3>基础代运营配套</h3>
+                <div class="price">RM 2,499 <span>/月</span></div>
+                <ul>
+                    <li>8 篇高质量笔记推送</li>
+                    <li>账号搭建与官方认证</li>
+                    <li>评论区舆情监控与互动</li>
+                    <li>KFS 投流策略方案建议</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn">最受推荐</a>
+            </div>
 
-        <div class="service-card">
-            <h3>高级全案配套</h3>
-            <span class="price-tag">RM 3,999 <span>/月</span></span>
-            <ul>
-                <li>12-14 篇全定制内容输出</li>
-                <li>竞品深度分析与季度策略</li>
-                <li>专属项目组全天候对接</li>
-                <li>月度多维度增长分析报告</li>
-            </ul>
-            <a href="https://wa.me/60176676597" class="cta-button">定制咨询</a>
+            <div class="card">
+                <h3>高级全案配套</h3>
+                <div class="price">RM 3,999 <span>/月</span></div>
+                <ul>
+                    <li>12-14 篇全定制内容输出</li>
+                    <li>竞品分析与季度增长策略</li>
+                    <li>专属项目组 24/7 对接</li>
+                    <li>月度多维度复盘报告</li>
+                </ul>
+                <a href="https://wa.me/60176676597" class="btn">定制咨询</a>
+            </div>
         </div>
-    </section>
+    </div>
 
     <footer>
-        <div class="footer-info">
-            <p>Email: libertidmy@gmail.com</p>
-            <p>WhatsApp: +6017-6676597</p>
+        <div style="margin-bottom: 20px;">
+            <p>Email: libertidmy@gmail.com | WhatsApp: +6017-6676597</p>
             <p>Location: Masai, Johor, Malaysia</p>
         </div>
-        <p style="font-size: 0.7rem; opacity: 0.6;">&copy; 2026 LIBERTIDE STUDIO. All rights reserved.</p>
+        <p style="opacity: 0.6;">&copy; 2026 LIBERTIDE STUDIO. All rights reserved.</p>
     </footer>
 
 </body>
