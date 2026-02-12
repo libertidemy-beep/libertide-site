@@ -3,96 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | LiberTide Studio</title>
+    <title>About | LIBERTIDE</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #fdfdfc;
-            --text-main: #1a1a1a;
-            --accent: #FF2442;
-            --container-w: 1100px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            line-height: 1.8;
-        }
-
-        /* 导航简易版 */
-        nav { padding: 30px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-text { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text-main); }
-        .back-link { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 600; }
-
-        /* 内容区 */
-        .about-hero { padding: 120px 0 80px; max-width: var(--container-w); margin: 0 auto; padding-left: 40px; padding-right: 40px; }
-        .manifesto-tag { color: var(--accent); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; display: block; }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        
-        /* 左侧文字 */
-        .story-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 40px; letter-spacing: -2px; }
-        .story-content p { font-size: 1.15rem; color: #444; margin-bottom: 25px; }
-        .highlight-box { background: #1a1a1a; color: white; padding: 40px; border-radius: 4px; margin-top: 40px; }
-        .highlight-box h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
-
-        /* 右侧图片/插画 */
-        .image-side { position: sticky; top: 100px; }
-        .profile-img { width: 100%; border-radius: 12px; filter: grayscale(100%); transition: 0.5s; }
-        .profile-img:hover { filter: grayscale(0%); }
-        .founder-name { margin-top: 20px; font-weight: 800; font-size: 1.2rem; }
-        .founder-title { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
-
-        footer { text-align: center; padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 100px; font-size: 0.9rem; opacity: 0.6; }
-
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: 1fr; }
-            .story-content h1 { font-size: 2.5rem; }
-            .image-side { position: relative; top: 0; order: -1; }
-        }
+        body { background: #fdfdfc; color: #1a1a1a; font-family: 'Plus Jakarta Sans', sans-serif; padding: 100px 40px; }
+        .about-wrap { max-width: 900px; margin: 0 auto; }
+        .tag { color: #FF2442; font-weight: 800; letter-spacing: 3px; font-size: 0.8rem; }
+        h1 { font-size: 4rem; letter-spacing: -3px; margin: 40px 0; line-height: 1.1; }
+        .content { font-size: 1.2rem; line-height: 1.8; color: #444; }
+        .content p { margin-bottom: 30px; }
+        .back { text-decoration: none; color: #1a1a1a; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo-text">LIBERTIDE STUDIO</a>
-            <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="about-wrap">
+        <a href="index.html" class="back">← Close</a><br><br><br>
+        <span class="tag">OUR STORY</span>
+        <h1>拒绝 Cincai，<br>追求极致。</h1>
+        <div class="content">
+            <p>LiberTide Studio 诞生于对“平庸内容”的不妥协。我们看到太多品牌在马新市场因为搬运内容而水土不服。我们成立的初衷，就是为了终结这种低效的循环。</p>
+            <p>我们不把自己定位为执行方，而是品牌的策略大脑。在 LiberTide，每一篇笔记、每一张视觉图、每一次投流配比，都是经过深度市场回测后的结果。</p>
+            <p><strong>不为流量而流量，只为增长而策略。</strong></p>
         </div>
-    </nav>
-
-    <main class="about-hero">
-        <div class="grid">
-            <div class="story-content">
-                <span class="manifesto-tag">Our Manifesto</span>
-                <h1>我不做 Copy & Paste，<br>我要做 Strategy。</h1>
-                
-                <p>在内容营销的圈子里，很多人习惯了流水线式的作业。用千篇一律的模板去敷衍每一个独特的品牌，这在我看来，不仅是对品牌的浪费，更是对创作者职业初衷的背叛。</p>
-                
-                <p><strong>“品牌不该被敷衍，运营不该只是完事。”</strong></p>
-                
-                <p>LiberTide Studio 诞生于柔佛。我们发现，马新市场的品牌出海，最怕的就是“水土不服”。一个有灵魂的品牌是有情绪的，它需要被深挖（Deep Dive），需要有一套定制化的打法（Strategy）。</p>
-
-                <div class="highlight-box">
-                    <h3>拒绝 Cincai，追求极致</h3>
-                    <p>在 LiberTide，我们只做那关键的 40%：深挖卖点、定制策略、精准执行。我们不搬运内容，我们翻译情感，协助有灵魂的产品在马新市场真正扎根。</p>
-                </div>
-            </div>
-
-            <div class="image-side">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800" alt="Founder" class="profile-img">
-                <div class="founder-name">Amoi 酱紫</div>
-                <div class="founder-title">Founder of LiberTide Studio</div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>© 2026 LIBERTIDE STUDIO | Built with passion in Johor</p>
-    </footer>
-
+    </div>
 </body>
 </html>
