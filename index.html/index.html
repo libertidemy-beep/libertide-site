@@ -18,86 +18,70 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
+            background-color: var(--bg); color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- 响应式导航栏 (已修复手机重叠) --- */
+        /* 导航 */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; transition: 0.4s; padding: 25px 0; }
         nav.scrolled { padding: 15px 0; background: rgba(253, 253, 252, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .nav-container { 
-            max-width: var(--container-w); margin: 0 auto; padding: 0 25px; 
-            display: flex; justify-content: space-between; align-items: center; 
-        }
+        .nav-container { max-width: var(--container-w); margin: 0 auto; padding: 0 25px; display: flex; justify-content: space-between; align-items: center; }
         .logo-box { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; text-decoration: none; color: var(--text-main); }
-        
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-link { text-decoration: none; color: var(--text-main); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .lang-switch { background: none; border: none; color: var(--text-sub); cursor: pointer; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-        
-        .btn-connect { 
-            padding: 10px 20px; border: 1.5px solid var(--text-main); color: var(--text-main); 
-            text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 4px; 
-            text-transform: uppercase; transition: 0.3s; 
-        }
+        .btn-connect { padding: 10px 20px; border: 1.5px solid var(--text-main); color: var(--text-main); text-decoration: none; font-size: 0.75rem; font-weight: 700; border-radius: 4px; text-transform: uppercase; transition: 0.3s; }
         .btn-connect:hover { background: var(--text-main); color: #fff; }
 
-        /* --- Hero 视觉 --- */
+        /* 容器 */
         .container { max-width: var(--container-w); margin: 0 auto; padding: 0 30px; }
-        .hero { padding: 220px 0 100px; text-align: left; }
+        .hero { padding: 220px 0 100px; }
         .hero span { color: var(--accent); font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 20px; }
-        .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1; font-weight: 600; letter-spacing: -4px; margin-bottom: 40px; 
-        }
-        .hero p { font-size: 1.25rem; color: var(--text-sub); max-width: 650px; font-weight: 400; line-height: 1.5; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1; font-weight: 600; letter-spacing: -4px; margin-bottom: 40px; }
+        .hero p { font-size: 1.25rem; color: var(--text-sub); max-width: 650px; line-height: 1.5; }
 
-        /* --- 过往案例 (黑白滤镜) --- */
         .section-tag { font-size: 0.75rem; font-weight: 800; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
         .section-title { font-size: 2.8rem; margin-bottom: 60px; font-weight: 600; letter-spacing: -2px; }
 
+        /* 案例网格 */
         .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 120px; }
         .portfolio-item { position: relative; background: #eee; aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; }
-        .portfolio-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .portfolio-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.8s; }
         .portfolio-item:hover .portfolio-img { filter: grayscale(0%); transform: scale(1.05); }
         .portfolio-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
-        .case-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; background: var(--accent); padding: 3px 8px; border-radius: 2px; display: inline-block; margin-bottom: 10px; }
 
-        /* --- 价格配套 (黑白对比) --- */
+        /* 价格卡片 */
         .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-bottom: 120px; border: 1px solid var(--border); }
         .pricing-card { padding: 80px 50px; background: var(--bg); display: flex; flex-direction: column; }
         .pricing-card.dark { background: #111; color: #fff; }
         .price { font-size: 3.5rem; font-weight: 700; margin: 30px 0; letter-spacing: -2px; }
-        .pricing-card ul { list-style: none; margin-bottom: 50px; opacity: 0.8; font-size: 1.05rem; }
+        .pricing-card ul { list-style: none; margin-bottom: 50px; flex-grow: 1; }
         .pricing-card li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .pricing-card.dark li { border-bottom-color: rgba(255,255,255,0.1); }
-        
-        .btn-plan { 
-            display: block; width: 100%; padding: 20px; text-align: center; text-decoration: none; 
-            font-size: 0.85rem; font-weight: 800; border: 1.5px solid var(--text-main); color: var(--text-main);
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
-        }
+        .btn-plan { display: block; width: 100%; padding: 20px; text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 800; border: 1.5px solid var(--text-main); color: var(--text-main); text-transform: uppercase; letter-spacing: 2px; }
         .pricing-card.dark .btn-plan { border-color: #fff; color: #fff; }
         .btn-plan:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-        /* --- 手机端适配调整 --- */
+        /* FAQ */
+        .faq-section { margin-bottom: 120px; max-width: 800px; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 25px 0; cursor: pointer; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.1rem; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent); }
+        .faq-item.active .faq-question::after { content: '-'; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: var(--text-sub); font-size: 1rem; padding-top: 0; }
+        .faq-item.active .faq-answer { max-height: 300px; padding-top: 20px; }
+
         @media (max-width: 850px) {
-            .hero h1 { letter-spacing: -2px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .nav-container { padding: 0 15px; }
-            .logo-box { font-size: 1.1rem; }
-            .nav-right { gap: 12px; }
-            .hero { padding: 160px 0 80px; }
+            .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .pricing-card { padding: 50px 30px; }
         }
 
-        footer { text-align: center; padding: 80px 0; opacity: 0.4; font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 80px 0; opacity: 0.4; font-size: 0.75rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -128,27 +112,15 @@
         <div class="portfolio-grid reveal">
             <div class="portfolio-item">
                 <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <span class="case-tag">F&B</span>
-                    <h4 data-zh="某知名咖啡厅" data-en="Cafe Branding">某知名咖啡厅</h4>
-                    <p>2.4k+ Saves</p>
-                </div>
+                <div class="portfolio-overlay"><h4>F&B Cafe</h4><p>2.4k+ Saves</p></div>
             </div>
             <div class="portfolio-item">
                 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <span class="case-tag">Beauty</span>
-                    <h4 data-zh="护肤品牌起盘" data-en="Skincare Launch">护肤品牌起盘</h4>
-                    <p>300% Inquiry Up</p>
-                </div>
+                <div class="portfolio-overlay"><h4>Beauty Branding</h4><p>300% Inquiries Up</p></div>
             </div>
             <div class="portfolio-item">
                 <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <span class="case-tag">SEO</span>
-                    <h4 data-zh="高端家居策略" data-en="Home Decor">高端家居策略</h4>
-                    <p>Top 3 Ranking</p>
-                </div>
+                <div class="portfolio-overlay"><h4>Home Strategy</h4><p>Top 3 SEO</p></div>
             </div>
         </div>
 
@@ -156,28 +128,53 @@
         <h2 class="section-title reveal" data-zh="代运营配套" data-en="Investment">代运营配套</h2>
         <div class="pricing-grid reveal">
             <div class="pricing-card">
-                <h3 data-zh="月度内容配套" data-en="Starter Plan">月度内容配套</h3>
+                <h3 data-zh="内容执行配套" data-en="Starter Plan">内容执行配套</h3>
                 <div class="price">RM 1,499</div>
-                <ul data-zh="<li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>月度运营数据复盘</li>"
-                    data-en="<li>4 Original Creative Posts</li><li>Visual Tone Setup</li><li>Monthly Data Review</li>">
-                    <li>4 篇原创爆款笔记执行</li><li>品牌内容调性视觉定位</li><li>月度运营数据复盘</li>
+                <ul data-zh="<li>每月 4 篇原创爆款笔记</li><li>品牌内容调性定位</li><li>笔记美工设计与后期</li>"
+                    data-en="<li>4 Original Posts / Month</li><li>Tone Positioning</li><li>Visual Post-production</li>">
+                    <li>每月 4 篇原创爆款笔记</li><li>品牌内容调性定位</li><li>笔记美工设计与后期</li>
                 </ul>
                 <a href="https://wa.me/60176676597" class="btn-plan">Enquire</a>
             </div>
             <div class="pricing-card dark">
-                <h3 data-zh="深度代运营配套" data-en="Growth Plan">深度代运营配套</h3>
+                <h3 data-zh="深度全案配套" data-en="Growth Plan">深度全案配套</h3>
                 <div class="price">RM 2,499</div>
-                <ul data-zh="<li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>聚光投放策略执行</li>"
-                    data-en="<li>8 High-quality Posts</li><li>Full Visual Identity</li><li>Ad Management</li>">
-                    <li>8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>聚光投放策略执行</li>
+                <ul data-zh="<li>每月 8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>专属代投策略建议</li>"
+                    data-en="<li>8 High-quality Posts / Month</li><li>Full Visual Identity</li><li>Ad Strategy Support</li>">
+                    <li>每月 8 篇高质量笔记推送</li><li>全案视觉体系深度搭建</li><li>专属代投策略建议</li>
                 </ul>
                 <a href="https://wa.me/60176676597" class="btn-plan">Scale Now</a>
+            </div>
+        </div>
+
+        <span class="section-tag reveal">Common Questions</span>
+        <h2 class="section-title reveal" data-zh="常见问题解答" data-en="FAQ">常见问题解答</h2>
+        <div class="faq-section reveal">
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question" data-zh="多久能看到实际效果？" data-en="When can I see results?">多久能看到实际效果？</div>
+                <div class="faq-answer" data-zh="首月为调性搭建期。通常在第 2-3 个月，随着账号权重提升与内容跑通，询盘量会出现明显增长。" data-en="First month is for setup. Real growth typically happens in Month 2-3.">首月为调性搭建期。通常在第 2-3 个月，随着账号权重提升与内容跑通，询盘量会出现明显增长。</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question" data-zh="内容是原创拍摄还是拼接？" data-en="Original or curated?">内容是原创拍摄还是拼接？</div>
+                <div class="faq-answer" data-zh="我们坚持原创。会根据配套提供产品实拍或深度视觉二创，确保笔记获得高曝光。" data-en="We prioritize originality via product shoots or deep visual re-creation.">我们坚持原创。会根据配套提供产品实拍或深度视觉二创，确保笔记获得高曝光。</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question" data-zh="什么样规模的品牌适合与你们合作？" data-en="What brand size fits your service?">什么样规模的品牌适合与你们合作？</div>
+                <div class="faq-answer" data-zh="我们专注服务于已有成熟产品/服务，并希望在马新市场建立品牌心智的商家。无论是初创精品店还是寻求本地化的成熟品牌，只要您追求的是“策略增长”而非“廉价刷屏”，LiberTide 都能为您提供匹配的方案。" data-en="We serve brands with proven products looking to build mindshare in MY/SG. Whether a boutique startup or a mature brand seeking localization, we fit if you value strategy over cheap spamming.">我们专注服务于已有成熟产品/服务，并希望在马新市场建立品牌心智的商家。无论是初创精品店还是寻求本地化的成熟品牌，只要您追求的是“策略增长”而非“廉价刷屏”，LiberTide 都能为您提供匹配的方案。</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question" data-zh="怎么保证内容不“水土不服”？" data-en="How to ensure local resonance?">怎么保证内容不“水土不服”？</div>
+                <div class="faq-answer" data-zh="团队常驻柔佛/新加坡，深谙本土语言习惯（Manglish/本地梗）和痛点，拒绝生搬硬套中国模板。" data-en="Based in Johor/SG, we understand local slang and nuances perfectly.">团队常驻柔佛/新加坡，深谙本土语言习惯（Manglish/本地梗）和痛点，拒绝生搬硬套中国模板。</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question" data-zh="数据不如预期会有补救方案吗？" data-en="What if data lags?">数据不如预期会有补救方案吗？</div>
+                <div class="faq-answer" data-zh="我们会每周回测数据。若效果未达标，将动态调整视觉与标题策略，确保目标达成。" data-en="We monitor weekly and pivot strategies dynamically to meet monthly targets.">我们会每周回测数据。若效果未达标，将动态调整视觉与标题策略，确保目标达成。</div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 LIBERTIDE STUDIO | MASAI, JOHOR</p>
+        <p>© 2026 LIBERTIDE STUDIO | JOHOR, MALAYSIA</p>
     </footer>
 
     <script>
@@ -190,13 +187,11 @@
             });
             document.querySelector('.lang-switch').innerText = currentLang === 'zh' ? 'EN / 中文' : '中文 / EN';
         }
-
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -216,6 +211,5 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
-
 </body>
 </html>
