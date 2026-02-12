@@ -3,28 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | LIBERTIDE</title>
+    <title>Our Philosophy | LIBERTIDE</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfdfc; color: #1a1a1a; font-family: 'Plus Jakarta Sans', sans-serif; padding: 100px 40px; }
-        .about-wrap { max-width: 900px; margin: 0 auto; }
-        .tag { color: #FF2442; font-weight: 800; letter-spacing: 3px; font-size: 0.8rem; }
-        h1 { font-size: 4rem; letter-spacing: -3px; margin: 40px 0; line-height: 1.1; }
-        .content { font-size: 1.2rem; line-height: 1.8; color: #444; }
-        .content p { margin-bottom: 30px; }
-        .back { text-decoration: none; color: #1a1a1a; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+        :root { --bg: #fdfdfc; --text: #1a1a1a; --accent: #FF2442; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif; overflow-x: hidden; }
+
+        /* 响应式导航 */
+        nav { padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -1px; }
+        .back-home { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--text); padding: 8px 16px; border-radius: 4px; transition: 0.3s; }
+        .back-home:hover { background: var(--text); color: #fff; }
+
+        /* About 布局 */
+        .split-section { display: flex; min-height: 90vh; }
+        .content-side { flex: 1; padding: 100px 8%; display: flex; flex-direction: column; justify-content: center; }
+        .visual-side { flex: 1; background: #1a1a1a; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+        .tag { color: var(--accent); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -3px; margin-bottom: 40px; }
+        .philosophy-text { font-size: 1.2rem; line-height: 1.8; color: #444; max-width: 500px; }
+
+        /* 这里的背景大字 */
+        .bg-text { position: absolute; font-size: 15vw; font-weight: 800; color: rgba(255,255,255,0.03); white-space: nowrap; pointer-events: none; transform: rotate(90deg); }
+
+        /* 核心原则网格 */
+        .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+        .value-item h3 { font-size: 1.1rem; margin-bottom: 10px; border-left: 3px solid var(--accent); padding-left: 15px; }
+        .value-item p { font-size: 0.95rem; color: #666; }
+
+        @media (max-width: 1024px) {
+            .split-section { flex-direction: column; }
+            .visual-side { min-height: 300px; }
+            nav { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="about-wrap">
-        <a href="index.html" class="back">← Close</a><br><br><br>
-        <span class="tag">OUR STORY</span>
-        <h1>拒绝 Cincai，<br>追求极致。</h1>
-        <div class="content">
-            <p>LiberTide Studio 诞生于对“平庸内容”的不妥协。我们看到太多品牌在马新市场因为搬运内容而水土不服。我们成立的初衷，就是为了终结这种低效的循环。</p>
-            <p>我们不把自己定位为执行方，而是品牌的策略大脑。在 LiberTide，每一篇笔记、每一张视觉图、每一次投流配比，都是经过深度市场回测后的结果。</p>
-            <p><strong>不为流量而流量，只为增长而策略。</strong></p>
+
+    <nav>
+        <a href="index.html" class="logo">LIBERTIDE.</a>
+        <a href="index.html" class="back-home">Close</a>
+    </nav>
+
+    <div class="split-section">
+        <div class="content-side">
+            <span class="tag">Our Manifesto</span>
+            <h1>不被流量定义的<br>长期主义。</h1>
+            <div class="philosophy-text">
+                <p>我们成立的初衷很简单：在这个充斥着流水线内容的时代，做那个愿意为品牌“下苦功夫”的少数派。</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>拒绝 Cincai</h3>
+                    <p>每一篇笔记都是策略的延伸，而非模板的复刻。</p>
+                </div>
+                <div class="value-item">
+                    <h3>数据回测</h3>
+                    <p>直觉固然重要，但我们更相信逻辑支撑下的确定性增长。</p>
+                </div>
+                <div class="value-item">
+                    <h3>深度本土</h3>
+                    <p>新马两地团队，确保内容真正触动本地用户的情绪。 </p>
+                </div>
+                <div class="value-item">
+                    <h3>全案闭环</h3>
+                    <p>从起盘到投流，我们为最终的商业转化结果负责。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visual-side">
+            <div class="bg-text">STRATEGY</div>
+            <div style="color:white; text-align:center; padding: 40px;">
+                <h2 style="font-size: 3rem; font-weight: 800; line-height: 1;">QUALITY OVER<br>QUANTITY.</h2>
+                <p style="margin-top: 20px; opacity: 0.5; letter-spacing: 2px;">LIBERTIDE STUDIO ®</p>
+            </div>
         </div>
     </div>
-</body>
+
+    </body>
 </html>
